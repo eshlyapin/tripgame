@@ -1,10 +1,10 @@
-﻿Build started 14.11.2013 2:43:22.
+﻿Build started 15.11.2013 0:38:17.
 Project "X:\cocos2d-x-2.2\projects\LTest\proj.win32\LTest.vcxproj" on node 2 (build target(s)).
 InitializeBuildStatus:
   Creating "Debug.win32\LTest.unsuccessfulbuild" because "AlwaysCreate" was specified.
 ClCompile:
-  C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I"X:\cocos2d-x-2.2\projects\LTest\proj.win32\..\..\..\cocos2dx" /I"X:\cocos2d-x-2.2\projects\LTest\proj.win32\..\..\..\cocos2dx\include" /I"X:\cocos2d-x-2.2\projects\LTest\proj.win32\..\..\..\cocos2dx\kazmath\include" /I"X:\cocos2d-x-2.2\projects\LTest\proj.win32\..\..\..\cocos2dx\platform\win32" /I"X:\cocos2d-x-2.2\projects\LTest\proj.win32\..\..\..\cocos2dx\platform\third_party\win32" /I"X:\cocos2d-x-2.2\projects\LTest\proj.win32\..\..\..\cocos2dx\platform\third_party\win32\OGLES" /I"X:\cocos2d-x-2.2\projects\LTest\proj.win32\..\..\..\external" /I"X:\cocos2d-x-2.2\projects\LTest\proj.win32\..\..\..\external\chipmunk\include\chipmunk" /I"X:\cocos2d-x-2.2\projects\LTest\proj.win32\..\..\..\CocosDenshion\include" /I"X:\cocos2d-x-2.2\projects\LTest\proj.win32\..\..\..\extensions" /I..\Classes /I.. /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _USE_MATH_DEFINES /D GL_GLEXT_PROTOTYPES /D CC_ENABLE_CHIPMUNK_INTEGRATION=1 /D COCOS2D_DEBUG=1 /D _CRT_SECURE_NO_WARNINGS /D _SCL_SECURE_NO_WARNINGS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug.win32\\" /Fd"Debug.win32\vc100.pdb" /Gd /TP /wd4267 /wd4251 /wd4244 /analyze- /errorReport:prompt ..\Classes\AppDelegate.cpp
-  AppDelegate.cpp
+  C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I"X:\cocos2d-x-2.2\projects\LTest\proj.win32\..\..\..\cocos2dx" /I"X:\cocos2d-x-2.2\projects\LTest\proj.win32\..\..\..\cocos2dx\include" /I"X:\cocos2d-x-2.2\projects\LTest\proj.win32\..\..\..\cocos2dx\kazmath\include" /I"X:\cocos2d-x-2.2\projects\LTest\proj.win32\..\..\..\cocos2dx\platform\win32" /I"X:\cocos2d-x-2.2\projects\LTest\proj.win32\..\..\..\cocos2dx\platform\third_party\win32" /I"X:\cocos2d-x-2.2\projects\LTest\proj.win32\..\..\..\cocos2dx\platform\third_party\win32\OGLES" /I"X:\cocos2d-x-2.2\projects\LTest\proj.win32\..\..\..\external" /I"X:\cocos2d-x-2.2\projects\LTest\proj.win32\..\..\..\external\chipmunk\include\chipmunk" /I"X:\cocos2d-x-2.2\projects\LTest\proj.win32\..\..\..\CocosDenshion\include" /I"X:\cocos2d-x-2.2\projects\LTest\proj.win32\..\..\..\extensions" /I..\Classes /I.. /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _USE_MATH_DEFINES /D GL_GLEXT_PROTOTYPES /D CC_ENABLE_CHIPMUNK_INTEGRATION=1 /D COCOS2D_DEBUG=1 /D _CRT_SECURE_NO_WARNINGS /D _SCL_SECURE_NO_WARNINGS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug.win32\\" /Fd"Debug.win32\vc100.pdb" /Gd /TP /wd4267 /wd4251 /wd4244 /analyze- /errorReport:prompt ..\Classes\GameScreen.cpp
+  GameScreen.cpp
 PreLinkEvent:
   if not exist "X:\cocos2d-x-2.2\projects\LTest\proj.win32\Debug.win32\" mkdir "X:\cocos2d-x-2.2\projects\LTest\proj.win32\Debug.win32\"
   xcopy /Y /Q "X:\cocos2d-x-2.2\projects\LTest\proj.win32\..\..\..\external\libwebsockets\win32\lib\*.*" "X:\cocos2d-x-2.2\projects\LTest\proj.win32\Debug.win32\"
@@ -15,6 +15,7 @@ Link:
   Debug.win32\GameObject.obj
   Debug.win32\GameScreen.obj
   Debug.win32\ObjectStrategy.obj
+  Debug.win32\pugixml.obj
   Debug.win32\main.obj
   "X:\cocos2d-x-2.2\projects\LTest\proj.win32\Debug.win32\libcocos2d.lib"
   "X:\cocos2d-x-2.2\projects\LTest\proj.win32\Debug.win32\libCocosDenshion.lib"
@@ -32,4 +33,4 @@ Done Building Project "X:\cocos2d-x-2.2\projects\LTest\proj.win32\LTest.vcxproj"
 
 Build succeeded.
 
-Time Elapsed 00:00:05.32
+Time Elapsed 00:00:05.83

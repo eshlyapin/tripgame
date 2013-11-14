@@ -11,7 +11,6 @@ typedef std::vector<GameScreen*> ScreenArray;
 
 class GameScreen : public cocos2d::CCScene
 {
-	GameObjectList mObjectList;
 	GameScreen() {}
 public:    
 

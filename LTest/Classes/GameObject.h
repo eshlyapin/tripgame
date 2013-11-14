@@ -3,16 +3,26 @@
 
 #include "cocos2d.h"
 #include <list>
+#include <map>
+#include <string>
 
-
-class GameObject
+class GameObject : public cocos2d::CCNode
 {
-	cocos2d::CCSprite* mSprite;
+	std::map<std::string, cocos2d::CCSprite*> mSpriteMap;
+	std::string mCurrentState;
+	std::string mName;
+
+	bool LoadSprites(const std::string& name);
+	void HideAll();
+	void ShowCurrent();
 public:
-	GameObject();
+	GameObject(const std::string& name, const std::string& currentState);
 	~GameObject();
 
-	cocos2d::CCSprite* GetSprite() const;
+	bool SetState(const std::string& name);
+
+	cocos2d::CCSprite* GetCurrentSprite() const;
+	std::vector<cocos2d::CCSprite*> GetSprites() const;
 };
 
 typedef std::list<GameObject*> GameObjectList;

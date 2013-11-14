@@ -131,13 +131,17 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\GameObject.cpp" />
     <ClCompile Include="..\Classes\GameScreen.cpp" />
     <ClCompile Include="..\Classes\ObjectStrategy.cpp" />
+    <ClCompile Include="..\Classes\pugixml.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="..\Classes\GameObject.h" />
     <ClInclude Include="..\Classes\GameScreen.h" />
+    <ClInclude Include="..\Classes\Log.h" />
     <ClInclude Include="..\Classes\ObjectStrategy.h" />
+    <ClInclude Include="..\Classes\pugiconfig.hpp" />
+    <ClInclude Include="..\Classes\pugixml.hpp" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>

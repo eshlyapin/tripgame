@@ -1,4 +1,7 @@
 #include "GameScreen.h"
+#include <vector>
+using namespace std;
+using namespace cocos2d;
 
 bool GameScreen::init()
 {
@@ -7,16 +10,18 @@ bool GameScreen::init()
 
 	//it just for test!
 	//not sure that the content should add here.
-	GameObject *gobject = new GameObject();	
-	addChild(gobject->GetSprite());
-	mObjectList.push_back(gobject);
+
+	//create object
+	GameObject *ob = new GameObject("smile","state2");
+	//add to scene
+	addChild(ob);
+	ob->setPosition(240, 160);
+	//we can change state.
+	ob->SetState("state1");
 	return true;
 }
 
 GameScreen::~GameScreen()
 {
-	for(GameObjectList::iterator object = mObjectList.begin(); object != mObjectList.end(); object++)
-	{
-		delete *object;
-	}
+
 }
