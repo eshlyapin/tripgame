@@ -2,6 +2,7 @@
 #define GAME_SCREEN_H
 
 #include "GameObject.h"
+#include "InputLayer.h"
 
 #include "cocos2d.h"
 #include <vector>
@@ -11,7 +12,12 @@ typedef std::vector<GameScreen*> ScreenArray;
 
 class GameScreen : public cocos2d::CCScene
 {
+protected:
+	cocos2d::CCLayer* mBackgroundLayer;
+	InputLayer* mInputLayer;
+
 	GameScreen() {}
+	cocos2d::CCLayer* LoadBackground(const std::string& file);
 public:    
 
 	virtual bool init();  
