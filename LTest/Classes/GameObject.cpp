@@ -114,3 +114,16 @@ vector<CCSprite*> GameObject::GetSprites() const
 	}
 	return sprites;
 }
+
+void GameObject::ccTouchesEnded(CCSet* touches, CCEvent* event)
+{
+	CCTouch* touch = (CCTouch*)(touches->anyObject());
+	CCPoint location = touch->getLocation();
+
+	OnClicked(location);
+}
+
+void GameObject::OnClicked(const cocos2d::CCPoint& point)
+{
+	std::cout << "clicked: " << point.x << " " << point.y << std::endl;
+}

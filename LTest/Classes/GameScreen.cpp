@@ -7,17 +7,24 @@ bool GameScreen::init()
 {
 	if( !CCScene::init() )
 		return false;
+	
 
 	//it just for test!
 	//not sure that the content should add here.
 
 	//create background
 	mBackgroundLayer = LoadBackground("HelloWorld.png");
-	addChild(mBackgroundLayer);
+	mObjectLayer = ObjectLayer::create();
+	mObjectLayer->setTouchEnabled(true);
+	
+	addChild(mObjectLayer);
+	//addChild(mBackgroundLayer);
+
 	//create object
 	GameObject *ob = new GameObject("smile","state2");
 	//add to scene
-	addChild(ob);
+	mObjectLayer->addChild(ob);
+	//addChild(ob);
 	ob->setPosition(240, 160);
 	//we can change state.
 	//ob->SetState("state1");

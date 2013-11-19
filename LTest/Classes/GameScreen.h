@@ -14,7 +14,7 @@ class GameScreen : public cocos2d::CCScene
 {
 protected:
 	cocos2d::CCLayer* mBackgroundLayer;
-	InputLayer* mInputLayer;
+	ObjectLayer* mObjectLayer;
 
 	GameScreen() {}
 	cocos2d::CCLayer* LoadBackground(const std::string& file);
