@@ -21,7 +21,7 @@ protected:
 public:    
 
 	virtual bool init();  
-	~GameScreen();
+	virtual ~GameScreen();
 	
 	//I'm not sure that following functions are need
 	//the CCScene is already has same methods
