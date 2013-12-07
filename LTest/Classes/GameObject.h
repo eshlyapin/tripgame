@@ -6,7 +6,7 @@
 #include <map>
 #include <string>
 
-class GameObject : public cocos2d::CCNode, cocos2d::CCTargetedTouchDelegate
+class GameObject : public cocos2d::CCNode, public cocos2d::CCStandardTouchDelegate//cocos2d::CCTargetedTouchDelegate
 {
 	std::map<std::string, cocos2d::CCSprite*> mSpriteMap;
 	std::string mCurrentState;
@@ -15,18 +15,23 @@ class GameObject : public cocos2d::CCNode, cocos2d::CCTargetedTouchDelegate
 	bool LoadSprites(const std::string& name);
 	void HideAll();
 	void ShowCurrent();
-public:
+	public:
 	GameObject(const std::string& name, const std::string& currentState);
-	virtual ~GameObject();
+	~GameObject();
 
 	bool SetState(const std::string& name);
 	void OnClicked(const cocos2d::CCPoint& point);
-	//doesn't work :(
+	
+	void onEnter();
+	void onExit();
+	virtual void touchDelegateRetain();
+	virtual void touchDelegateRelease();
 	virtual void ccTouchesEnded(cocos2d::CCSet* touches, cocos2d::CCEvent* event);
-
+	
 	cocos2d::CCSprite* GetCurrentSprite() const;
 	std::vector<cocos2d::CCSprite*> GetSprites() const;
 };
+
 
 typedef std::list<GameObject*> GameObjectList;
 

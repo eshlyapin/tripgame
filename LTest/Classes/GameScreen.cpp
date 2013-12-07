@@ -65,25 +65,39 @@ bool GameScreen::LoadObjects(const std::string& name)
 
 	xml_document doc;
 	CreateXmlDocument(xmlPath.c_str(), doc);
-	xml_node state = doc.child("background");
-	mBackgroundLayer = LoadBackground(state.child("name").text().as_string());
-	addChild(mBackgroundLayer);
 
-	for(xml_node state = doc.child("object"); state; state = state.next_sibling("object"))
+	string backgroundLayer = doc.child("background").child("name").text().as_string();
+
+	if(backgroundLayer == "")
 	{
-		string objectName = state.child("name").text().as_string();
-		string objectState = state.child("state").text().as_string();
-		int x = state.child("xpos").text().as_int();
-		int y = state.child("ypos").text().as_int();
+		LOG_ERR("Can't load background!");
+		return false;
+	}
+	else
+	{
+		mBackgroundLayer = LoadBackground(backgroundLayer);
+		addChild(mBackgroundLayer);
+	}
+
+	for(xml_node object = doc.child("object"); object; object = object.next_sibling("object"))
+	{
+		string objectName = object.child("name").text().as_string();
+		string objectState = object.child("state").text().as_string();
 		
-		if(objectName == "" || objectState == "" || x == 0 || y == 0)
+		xml_text x = object.child("xpos").text();//.as_string();
+		xml_text y = object.child("ypos").text();//.as_string();
+		
+		if(objectName == "" || objectState == "" || x == NULL || y == NULL)
 		{
-			//mSpriteMap.clear();
-			return false;
+			LOG_ERR("Can't load object " + objectName);
+			//return false;
 		}
-		GameObject *ob = new GameObject(objectName, objectState);
-		addChild(ob);
-		ob->setPosition(x, y);
+		else
+		{
+			GameObject *ob = new GameObject(objectName, objectState);
+			addChild(ob);
+			ob->setPosition(x.as_int(), y.as_int());
+		}
 		
 	}
 	return true;

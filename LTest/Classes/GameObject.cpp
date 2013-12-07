@@ -2,6 +2,7 @@
 #include "pugixml.hpp"
 #include "Log.h"
 #include "utils.h"
+
 using namespace cocos2d;
 using namespace std;
 using namespace pugi;
@@ -15,23 +16,6 @@ GameObject::GameObject(const string& name, const string& curState)
 	if(!SetState(curState))
 		LOG_ERR("State is not found: " + curState);
 }
-
-/*string GetXmlPath(const std::string& objectName)
-{
-	//string lol = objectName + ".xml" ;
-	string xmlFile = objectName + ".xml"; 
-	return CCFileUtils::sharedFileUtils()->fullPathForFilename(xmlFile.c_str());
-}
-
-void CreateXmlDocument(const char* file, xml_document& retDoc)
-{
-	unsigned char *buffer = 0;
-	unsigned long bufferSize = 0;
-	buffer = CCFileUtils::sharedFileUtils()->getFileData(file,"r", &bufferSize);
-
-	retDoc.load_buffer(buffer, bufferSize);
-	delete[] buffer;
-}*/
 
 bool GameObject::LoadSprites(const std::string& name)
 {
@@ -62,9 +46,6 @@ bool GameObject::LoadSprites(const std::string& name)
 	}
 	return true;
 }
-
-
-
 
 GameObject::~GameObject()
 {
@@ -117,13 +98,36 @@ vector<CCSprite*> GameObject::GetSprites() const
 
 void GameObject::ccTouchesEnded(CCSet* touches, CCEvent* event)
 {
-	CCTouch* touch = (CCTouch*)(touches->anyObject());
-	CCPoint location = touch->getLocation();
+CCTouch* touch = (CCTouch*)(touches->anyObject());
+CCPoint location = touch->getLocation();
 
-	OnClicked(location);
+OnClicked(location);
 }
 
 void GameObject::OnClicked(const cocos2d::CCPoint& point)
 {
-	std::cout << "clicked: " << point.x << " " << point.y << std::endl;
+std::cout << "clicked: " << point.x << " " << point.y << std::endl;
 }
+
+void GameObject::touchDelegateRelease()
+{
+this->release();
+}
+void GameObject::touchDelegateRetain()
+{
+this->retain();
+}
+
+void GameObject::onEnter()
+{
+   CCDirector* pDirector = CCDirector::sharedDirector();
+pDirector->getTouchDispatcher()->addStandardDelegate(this, 0);
+   CCNode::onEnter();
+}
+
+void GameObject::onExit()
+{
+   CCDirector* pDirector = CCDirector::sharedDirector();
+   pDirector->getTouchDispatcher()->removeDelegate(this);
+   CCNode::onExit();
+}    
