@@ -1,5 +1,9 @@
 #include "utils.h"
 
+using namespace pugi;
+using namespace std;
+using namespace cocos2d;
+
 string GetXmlPath(const std::string& objectName)
 {
 	//string lol = objectName + ".xml" ;

@@ -17,7 +17,7 @@ class GameObject : public cocos2d::CCNode, cocos2d::CCTargetedTouchDelegate
 	void ShowCurrent();
 public:
 	GameObject(const std::string& name, const std::string& currentState);
-	~GameObject();
+	virtual ~GameObject();
 
 	bool SetState(const std::string& name);
 	void OnClicked(const cocos2d::CCPoint& point);

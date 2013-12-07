@@ -1,10 +1,7 @@
 #include "cocos2d.h"
 #include "pugixml.hpp"
+#include <string>
 
-using namespace pugi;
-using namespace std;
-using namespace cocos2d;
+std::string GetXmlPath(const std::string& objectName);
 
-string GetXmlPath(const std::string& objectName);
-
-void CreateXmlDocument(const char* file, xml_document & retDoc);
+void CreateXmlDocument(const char* file, pugi::xml_document& retDoc);

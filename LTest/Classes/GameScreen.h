@@ -12,6 +12,7 @@ typedef std::vector<GameScreen*> ScreenArray;
 
 class GameScreen : public cocos2d::CCScene
 {
+	bool LoadObjects(const std::string& name);
 protected:
 	cocos2d::CCLayer* mBackgroundLayer;
 	ObjectLayer* mObjectLayer;
@@ -21,7 +22,7 @@ protected:
 public:    
 
 	virtual bool init();  
-	virtual ~GameScreen();
+	~GameScreen();
 	
 	//I'm not sure that following functions are need
 	//the CCScene is already has same methods
