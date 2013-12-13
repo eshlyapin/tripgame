@@ -2,6 +2,7 @@
 #define GAME_OBJECT_H
 
 #include "cocos2d.h"
+#include "pugixml.hpp"
 #include <list>
 #include <map>
 #include <string>
@@ -15,11 +16,15 @@ class GameObject : public cocos2d::CCNode, public cocos2d::CCStandardTouchDelega
 	bool LoadSprites(const std::string& name);
 	void HideAll();
 	void ShowCurrent();
+	std::string ReadObjectName(pugi::xml_document& doc);
+
 	public:
 	GameObject(const std::string& name, const std::string& currentState);
 	~GameObject();
 
 	bool SetState(const std::string& name);
+	std::string GetName() const {return mName;}
+
 	void OnClicked(const cocos2d::CCPoint& point);
 	
 	void onEnter();

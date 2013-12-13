@@ -2,6 +2,7 @@
 #include <vector>
 #include "utils.h"
 #include "Log.h"
+#include "HUD.h"
 
 using namespace std;
 using namespace cocos2d;
@@ -9,31 +10,14 @@ using namespace pugi;
 
 bool GameScreen::init()
 {
+
 	if( !CCScene::init() )
 		return false;
 	
 
-	//it just for test!
-	//not sure that the content should add here.
-
-	//create background
-	/*mBackgroundLayer = LoadBackground("HelloWorld.png");
-	mObjectLayer = ObjectLayer::create();
-	mObjectLayer->setTouchEnabled(true);
-	
-	addChild(mObjectLayer);
-	//addChild(mBackgroundLayer);
-
-	//create object
-	GameObject *ob = new GameObject("smile","state2");
-	//add to scene
-	mObjectLayer->addChild(ob);
-	//addChild(ob);
-	ob->setPosition(240, 160);
-	//we can change state.
-	//ob->SetState("state1");*/
 	if(!LoadObjects("main"))
 		LOG_ERR("Can't load game object!");
+
 	return true;
 }
 
@@ -57,6 +41,11 @@ cocos2d::CCLayer* GameScreen::LoadBackground(const std::string& file)
 	return background;
 }
 
+std::string GameScreen::GetBackgroundPath(const pugi::xml_document& doc)
+{
+	return doc.child("background").child("name").text().as_string();
+}
+
 bool GameScreen::LoadObjects(const std::string& name)
 {
 	string xmlPath = GetXmlPath(name);
@@ -66,18 +55,21 @@ bool GameScreen::LoadObjects(const std::string& name)
 	xml_document doc;
 	CreateXmlDocument(xmlPath.c_str(), doc);
 
-	string backgroundLayer = doc.child("background").child("name").text().as_string();
+	string backgroundPath = GetBackgroundPath(doc);
 
-	if(backgroundLayer == "")
+	if(backgroundPath == "")
 	{
 		LOG_ERR("Can't load background!");
 		return false;
 	}
 	else
 	{
-		mBackgroundLayer = LoadBackground(backgroundLayer);
+		mBackgroundLayer = LoadBackground(backgroundPath);
 		addChild(mBackgroundLayer);
 	}
+	
+	//FFFUUUUuu~
+	addChild(&HUD::GetInstance());
 
 	for(xml_node object = doc.child("object"); object; object = object.next_sibling("object"))
 	{

@@ -2,6 +2,7 @@
 #include "pugixml.hpp"
 #include "Log.h"
 #include "utils.h"
+#include "inventory.h"
 
 using namespace cocos2d;
 using namespace std;
@@ -17,6 +18,11 @@ GameObject::GameObject(const string& name, const string& curState)
 		LOG_ERR("State is not found: " + curState);
 }
 
+std::string GameObject::ReadObjectName(pugi::xml_document& doc)
+{
+	return doc.next_sibling("name").text().as_string();
+}
+
 bool GameObject::LoadSprites(const std::string& name)
 {
 	//get files to load
@@ -27,6 +33,8 @@ bool GameObject::LoadSprites(const std::string& name)
 
 	xml_document doc;
 	CreateXmlDocument(xmlPath.c_str(), doc);
+
+	mName = ReadObjectName(doc);
 
 	for(xml_node state = doc.child("state"); state; state = state.next_sibling("state"))
 	{
@@ -106,7 +114,8 @@ OnClicked(location);
 
 void GameObject::OnClicked(const cocos2d::CCPoint& point)
 {
-std::cout << "clicked: " << point.x << " " << point.y << std::endl;
+	std::cout << "clicked: " << point.x << " " << point.y << std::endl;
+	Inventory::GetInstance().AddItems(this);
 }
 
 void GameObject::touchDelegateRelease()

@@ -6,6 +6,7 @@
 
 #include "cocos2d.h"
 #include <vector>
+#include "pugixml.hpp"
 
 class GameScreen;
 typedef std::vector<GameScreen*> ScreenArray;
@@ -13,6 +14,7 @@ typedef std::vector<GameScreen*> ScreenArray;
 class GameScreen : public cocos2d::CCScene
 {
 	bool LoadObjects(const std::string& name);
+	std::string GetBackgroundPath(const pugi::xml_document& doc);
 protected:
 	cocos2d::CCLayer* mBackgroundLayer;
 	ObjectLayer* mObjectLayer;
@@ -22,19 +24,7 @@ protected:
 public:    
 
 	virtual bool init();  
-	~GameScreen();
-	
-	//I'm not sure that following functions are need
-	//the CCScene is already has same methods
-	//and probably we can use it to implement
-	//our structure of game scenes (like a tree)
-	
-/*private:
-	ScreenArray mChildList;
-	GameScreen* mParentScreen;
-public:
-	void AddChild(GameScreen* child);
-	void GetParent() const;*/
+	virtual ~GameScreen();
 
 	CREATE_FUNC(GameScreen);
 };
