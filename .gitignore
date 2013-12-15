@@ -7,4 +7,4 @@
 *.res
 *.manifest
 *.rc
-LTest/proj.win32/Debug.win32/*
+LTest/proj.win32/Debug.win32/

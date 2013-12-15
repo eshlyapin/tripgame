@@ -19,9 +19,9 @@ public:
 
 	static Inventory& GetInstance();
 	
-	bool AddItems(GameObject* object);
-	GameObjectList GetItem(const std::string& name);
-	size_t GetSize() const {return CellsCount;}
-	GameObjectList GetItem(size_t index);
+	bool			AddItems(GameObject* object);
+	GameObjectList	GetItem(const std::string& name);
+	GameObjectList	GetItem(size_t index);
+	size_t			GetSize() const {return CellsCount;}
 };
 #endif
