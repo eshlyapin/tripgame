@@ -7,4 +7,5 @@
 *.res
 *.manifest
 *.rc
+*.suo
 LTest/proj.win32/Debug.win32/
