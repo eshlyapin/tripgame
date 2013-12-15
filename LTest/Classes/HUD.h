@@ -21,7 +21,7 @@ class HUD : public cocos2d::CCLayer
 	std::vector<InventoryCell*> mCells;
 	void CreateInventory();
 public:
-
+	~HUD();
 	static HUD& GetInstance();
 
 	void update(float delta);

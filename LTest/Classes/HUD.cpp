@@ -22,6 +22,15 @@ HUD::HUD()
 	CreateInventory();
 }
 
+HUD::~HUD()
+{
+	removeAllChildrenWithCleanup(true);
+	for(size_t i = 0; i < mCells.size(); ++i)
+	{
+		delete mCells[i];
+		mCells[i] = 0;
+	}
+}
 
 HUD& HUD::GetInstance()
 {
@@ -58,7 +67,6 @@ void HUD::CreateInventory()
 
 		addChild(cell);
 	}
-	//this->schedule(shedule_selector(HUD::update));
 	scheduleUpdate();
 }
 
@@ -70,12 +78,14 @@ void HUD::update(float delta)
 		mCells[i]->mCountElements = objs.size();
 
 		if(objs.size() > 0)
-		{
-			CCPoint pos = mCells[i]->getPosition();
-			objs.front()->setPosition(pos);
-			
+		{			
 			GameObjectList::iterator it = objs.begin();
-			for(++it; it != objs.end(); ++it)
+
+			CCPoint pos = mCells[i]->getPosition();
+			(*it)->setPosition(pos);
+			it++;
+
+			for(it; it != objs.end(); ++it)
 				(*it)->setVisible(false);
 		}
 	}
