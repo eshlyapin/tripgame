@@ -4,11 +4,21 @@
 #include "cocos2d.h"
 #include <vector>
 
+struct InventoryCell : public cocos2d::CCNode
+{
+	cocos2d::CCSprite* mCell;
+	cocos2d::CCLabelTTF* mLabel;
+	size_t mCountElements;
+
+	InventoryCell(cocos2d::CCSprite* sprite);
+	void update(float dt);
+};
+
 class HUD : public cocos2d::CCLayer
 {
 	HUD();
 
-	std::vector<cocos2d::CCSprite*> mCells;
+	std::vector<InventoryCell*> mCells;
 	void CreateInventory();
 public:
 

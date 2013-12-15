@@ -21,6 +21,7 @@ bool Inventory::AddItems(GameObject* object)
 		if(objs.front()->GetName() == object->GetName())
 		{
 			objs.push_back(object);
+			mCells[i] = objs;
 			return true;
 		}
 	}

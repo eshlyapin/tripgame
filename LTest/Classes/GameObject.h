@@ -16,11 +16,9 @@ class GameObject : public cocos2d::CCNode, public cocos2d::CCStandardTouchDelega
 	bool LoadSprites(const std::string& name);
 	void HideAll();
 	void ShowCurrent();
-	std::string ReadObjectName(pugi::xml_document& doc);
-
-	public:
+public:
 	GameObject(const std::string& name, const std::string& currentState);
-	~GameObject();
+	virtual ~GameObject();
 
 	bool SetState(const std::string& name);
 	std::string GetName() const {return mName;}
@@ -33,8 +31,8 @@ class GameObject : public cocos2d::CCNode, public cocos2d::CCStandardTouchDelega
 	virtual void touchDelegateRelease();
 	virtual void ccTouchesEnded(cocos2d::CCSet* touches, cocos2d::CCEvent* event);
 	
-	cocos2d::CCSprite* GetCurrentSprite() const;
-	std::vector<cocos2d::CCSprite*> GetSprites() const;
+	cocos2d::CCSprite*				GetCurrentSprite() const;
+	std::vector<cocos2d::CCSprite*>	GetSprites() const;
 };
 
 

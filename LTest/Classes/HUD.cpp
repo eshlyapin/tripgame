@@ -1,6 +1,7 @@
 #include "HUD.h"
 #include "inventory.h"
 #include "CCScheduler.h"
+#include <sstream>
 using namespace cocos2d;
 using namespace std;
 
@@ -47,9 +48,10 @@ void HUD::CreateInventory()
 
 	for(size_t i = 0; i < CellCount; ++i)
 	{	
-		CCSprite* cell = CCSprite::create("HUD/invCell.png");
+		CCSprite* cellSprt = CCSprite::create("HUD/invCell.png");
 
 		float x = startX + cellSize * i;
+		InventoryCell *cell = new InventoryCell(cellSprt);
 		cell->setPosition(ccp(x, inventoryY));
 		
 		mCells.push_back(cell);
@@ -65,11 +67,45 @@ void HUD::update(float delta)
 	for(size_t i = 0; i < mCells.size(); ++i)
 	{
 		GameObjectList objs = Inventory::GetInstance().GetItem(i);
+		mCells[i]->mCountElements = objs.size();
+
 		if(objs.size() > 0)
 		{
 			CCPoint pos = mCells[i]->getPosition();
 			objs.front()->setPosition(pos);
+			
+			GameObjectList::iterator it = objs.begin();
+			for(++it; it != objs.end(); ++it)
+				(*it)->setVisible(false);
 		}
-		//need to draw objs.size on the cell
+	}
+}
+
+InventoryCell::InventoryCell(CCSprite* sprite)
+	:mCell(sprite),
+	mCountElements(0)
+{
+	const int LABEL_OFFSET = -30;
+	addChild(mCell);
+
+	mLabel = CCLabelTTF::create(".","Arial", 20.f);
+	mLabel->setPositionY(LABEL_OFFSET);
+	addChild(mLabel);
+
+	scheduleUpdate();
+}
+
+void InventoryCell::update(float dt)
+{
+	if(mCountElements > 0)
+	{
+		stringstream stream;
+		stream << mCountElements;
+		mLabel->setString(stream.str().c_str());
+		mLabel->setVisible(true);
+	}
+	else
+	{
+		mLabel->setVisible(false);
 	}
 }

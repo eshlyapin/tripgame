@@ -18,10 +18,6 @@ GameObject::GameObject(const string& name, const string& curState)
 		LOG_ERR("State is not found: " + curState);
 }
 
-std::string GameObject::ReadObjectName(pugi::xml_document& doc)
-{
-	return doc.next_sibling("name").text().as_string();
-}
 
 bool GameObject::LoadSprites(const std::string& name)
 {
@@ -33,8 +29,6 @@ bool GameObject::LoadSprites(const std::string& name)
 
 	xml_document doc;
 	CreateXmlDocument(xmlPath.c_str(), doc);
-
-	mName = ReadObjectName(doc);
 
 	for(xml_node state = doc.child("state"); state; state = state.next_sibling("state"))
 	{
@@ -114,8 +108,8 @@ void GameObject::ccTouchesEnded(CCSet* touches, CCEvent* event)
 
 void GameObject::OnClicked(const cocos2d::CCPoint& point)
 {
-        std::cout << "clicked: " << point.x << " " << point.y << std::endl;
-        Inventory::GetInstance().AddItems(this);
+	std::cout << "clicked: " << point.x << " " << point.y << std::endl;
+	Inventory::GetInstance().AddItems(this);
 }
 
 void GameObject::touchDelegateRelease()
