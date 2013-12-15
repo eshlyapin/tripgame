@@ -106,32 +106,32 @@ vector<CCSprite*> GameObject::GetSprites() const
 
 void GameObject::ccTouchesEnded(CCSet* touches, CCEvent* event)
 {
-CCTouch* touch = (CCTouch*)(touches->anyObject());
-CCPoint location = touch->getLocation();
+	CCTouch* touch = (CCTouch*)(touches->anyObject());
+	CCPoint location = touch->getLocation();
 
-OnClicked(location);
+	OnClicked(location);
 }
 
 void GameObject::OnClicked(const cocos2d::CCPoint& point)
 {
-	std::cout << "clicked: " << point.x << " " << point.y << std::endl;
-	Inventory::GetInstance().AddItems(this);
+        std::cout << "clicked: " << point.x << " " << point.y << std::endl;
+        Inventory::GetInstance().AddItems(this);
 }
 
 void GameObject::touchDelegateRelease()
 {
-this->release();
+	this->release();
 }
 void GameObject::touchDelegateRetain()
 {
-this->retain();
+	this->retain();
 }
 
 void GameObject::onEnter()
 {
-   CCDirector* pDirector = CCDirector::sharedDirector();
-pDirector->getTouchDispatcher()->addStandardDelegate(this, 0);
-   CCNode::onEnter();
+	CCDirector* pDirector = CCDirector::sharedDirector();
+	pDirector->getTouchDispatcher()->addStandardDelegate(this, 0);
+	CCNode::onEnter();
 }
 
 void GameObject::onExit()

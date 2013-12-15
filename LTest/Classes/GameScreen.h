@@ -13,6 +13,7 @@ typedef std::vector<GameScreen*> ScreenArray;
 
 class GameScreen : public cocos2d::CCScene
 {
+	std::vector<GameObject*> listOfObjects;
 	bool LoadObjects(const std::string& name);
 	std::string GetBackgroundPath(const pugi::xml_document& doc);
 protected:

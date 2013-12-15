@@ -1,42 +1,38 @@
-﻿Build started 19.11.2013 19:52:21.
-Project "X:\cocos2d-x-2.2\projects\LTest\proj.win32\LTest.vcxproj" on node 2 (build target(s)).
-InitializeBuildStatus:
-  Creating "Debug.win32\LTest.unsuccessfulbuild" because "AlwaysCreate" was specified.
-ClCompile:
-  C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I"X:\cocos2d-x-2.2\projects\LTest\proj.win32\..\..\..\cocos2dx" /I"X:\cocos2d-x-2.2\projects\LTest\proj.win32\..\..\..\cocos2dx\include" /I"X:\cocos2d-x-2.2\projects\LTest\proj.win32\..\..\..\cocos2dx\kazmath\include" /I"X:\cocos2d-x-2.2\projects\LTest\proj.win32\..\..\..\cocos2dx\platform\win32" /I"X:\cocos2d-x-2.2\projects\LTest\proj.win32\..\..\..\cocos2dx\platform\third_party\win32" /I"X:\cocos2d-x-2.2\projects\LTest\proj.win32\..\..\..\cocos2dx\platform\third_party\win32\OGLES" /I"X:\cocos2d-x-2.2\projects\LTest\proj.win32\..\..\..\external" /I"X:\cocos2d-x-2.2\projects\LTest\proj.win32\..\..\..\external\chipmunk\include\chipmunk" /I"X:\cocos2d-x-2.2\projects\LTest\proj.win32\..\..\..\CocosDenshion\include" /I"X:\cocos2d-x-2.2\projects\LTest\proj.win32\..\..\..\extensions" /I..\Classes /I.. /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _USE_MATH_DEFINES /D GL_GLEXT_PROTOTYPES /D CC_ENABLE_CHIPMUNK_INTEGRATION=1 /D COCOS2D_DEBUG=1 /D _CRT_SECURE_NO_WARNINGS /D _SCL_SECURE_NO_WARNINGS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug.win32\\" /Fd"Debug.win32\vc100.pdb" /Gd /TP /wd4267 /wd4251 /wd4244 /analyze- /errorReport:prompt ..\Classes\AppDelegate.cpp ..\Classes\GameObject.cpp ..\Classes\GameScreen.cpp ..\Classes\InputLayer.cpp
-  AppDelegate.cpp
-  Generating Code...
-  Skipping... (no relevant changes detected)
-  InputLayer.cpp
-  GameScreen.cpp
-  GameObject.cpp
-PreLinkEvent:
-  if not exist "X:\cocos2d-x-2.2\projects\LTest\proj.win32\Debug.win32\" mkdir "X:\cocos2d-x-2.2\projects\LTest\proj.win32\Debug.win32\"
-  xcopy /Y /Q "X:\cocos2d-x-2.2\projects\LTest\proj.win32\..\..\..\external\libwebsockets\win32\lib\*.*" "X:\cocos2d-x-2.2\projects\LTest\proj.win32\Debug.win32\"
-  :VCEnd
-  Скопировано файлов: 2.
-Link:
-  C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"X:\cocos2d-x-2.2\projects\LTest\proj.win32\Debug.win32\LTest.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:"X:\cocos2d-x-2.2\projects\LTest\proj.win32\Debug.win32\\" libExtensions.lib libcocos2d.lib libCocosDenshion.lib opengl32.lib glew32.lib libBox2d.lib libchipmunk.lib libcurl_imp.lib pthreadVCE2.lib websockets.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug.win32\LTest.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"X:\cocos2d-x-2.2\projects\LTest\proj.win32\Debug.win32\LTest.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"X:\cocos2d-x-2.2\projects\LTest\proj.win32\Debug.win32\LTest.lib" /MACHINE:X86 Debug.win32\AppDelegate.obj
-  Debug.win32\GameObject.obj
-  Debug.win32\GameScreen.obj
-  Debug.win32\InputLayer.obj
-  Debug.win32\ObjectStrategy.obj
-  Debug.win32\pugixml.obj
-  Debug.win32\main.obj
-  "X:\cocos2d-x-2.2\projects\LTest\proj.win32\Debug.win32\libcocos2d.lib"
-  "X:\cocos2d-x-2.2\projects\LTest\proj.win32\Debug.win32\libCocosDenshion.lib"
-  "X:\cocos2d-x-2.2\projects\LTest\proj.win32\Debug.win32\libExtensions.lib"
-  "X:\cocos2d-x-2.2\projects\LTest\proj.win32\Debug.win32\libBox2D.lib"
-  "X:\cocos2d-x-2.2\projects\LTest\proj.win32\Debug.win32\libchipmunk.lib"
-AppDelegate.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/INCREMENTAL:NO' specification
-  LTest.vcxproj -> X:\cocos2d-x-2.2\projects\LTest\proj.win32\Debug.win32\LTest.exe
-Manifest:
-  C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"X:\cocos2d-x-2.2\projects\LTest\proj.win32\Debug.win32\LTest.exe;#1" /manifest Debug.win32\LTest.exe.intermediate.manifest
-FinalizeBuildStatus:
-  Deleting file "Debug.win32\LTest.unsuccessfulbuild".
-  Touching "Debug.win32\LTest.lastbuildstate".
-Done Building Project "X:\cocos2d-x-2.2\projects\LTest\proj.win32\LTest.vcxproj" (build target(s)).
+﻿Build started 15.12.2013 16:34:36.
+     1>Project "C:\android\cocos2d-x-2.2\projects\LTest\proj.win32\LTest.vcxproj" on node 3 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Debug.win32\LTest.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I"C:\android\cocos2d-x-2.2\projects\LTest\proj.win32\..\..\..\cocos2dx" /I"C:\android\cocos2d-x-2.2\projects\LTest\proj.win32\..\..\..\cocos2dx\include" /I"C:\android\cocos2d-x-2.2\projects\LTest\proj.win32\..\..\..\cocos2dx\kazmath\include" /I"C:\android\cocos2d-x-2.2\projects\LTest\proj.win32\..\..\..\cocos2dx\platform\win32" /I"C:\android\cocos2d-x-2.2\projects\LTest\proj.win32\..\..\..\cocos2dx\platform\third_party\win32" /I"C:\android\cocos2d-x-2.2\projects\LTest\proj.win32\..\..\..\cocos2dx\platform\third_party\win32\OGLES" /I"C:\android\cocos2d-x-2.2\projects\LTest\proj.win32\..\..\..\external" /I"C:\android\cocos2d-x-2.2\projects\LTest\proj.win32\..\..\..\external\chipmunk\include\chipmunk" /I"C:\android\cocos2d-x-2.2\projects\LTest\proj.win32\..\..\..\CocosDenshion\include" /I"C:\android\cocos2d-x-2.2\projects\LTest\proj.win32\..\..\..\extensions" /I..\Classes /I.. /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _USE_MATH_DEFINES /D GL_GLEXT_PROTOTYPES /D CC_ENABLE_CHIPMUNK_INTEGRATION=1 /D COCOS2D_DEBUG=1 /D _CRT_SECURE_NO_WARNINGS /D _SCL_SECURE_NO_WARNINGS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug.win32\\" /Fd"Debug.win32\vc100.pdb" /Gd /TP /wd4267 /wd4251 /wd4244 /analyze- /errorReport:prompt ..\Classes\GameScreen.cpp
+         GameScreen.cpp
+       PreLinkEvent:
+         if not exist "C:\android\cocos2d-x-2.2\projects\LTest\proj.win32\Debug.win32\" mkdir "C:\android\cocos2d-x-2.2\projects\LTest\proj.win32\Debug.win32\"
+         xcopy /Y /Q "C:\android\cocos2d-x-2.2\projects\LTest\proj.win32\..\..\..\external\libwebsockets\win32\lib\*.*" "C:\android\cocos2d-x-2.2\projects\LTest\proj.win32\Debug.win32\"
+         :VCEnd
+         Скопировано файлов: 2.
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\android\cocos2d-x-2.2\projects\LTest\proj.win32\Debug.win32\LTest.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:"C:\android\cocos2d-x-2.2\projects\LTest\proj.win32\Debug.win32\\" libExtensions.lib libcocos2d.lib libCocosDenshion.lib opengl32.lib glew32.lib libBox2d.lib libchipmunk.lib libcurl_imp.lib pthreadVCE2.lib websockets.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug.win32\LTest.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\android\cocos2d-x-2.2\projects\LTest\proj.win32\Debug.win32\LTest.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\android\cocos2d-x-2.2\projects\LTest\proj.win32\Debug.win32\LTest.lib" /MACHINE:X86 Debug.win32\AppDelegate.obj
+         Debug.win32\GameObject.obj
+         Debug.win32\GameScreen.obj
+         Debug.win32\InputLayer.obj
+         Debug.win32\ObjectStrategy.obj
+         Debug.win32\pugixml.obj
+         Debug.win32\utils.obj
+         Debug.win32\main.obj
+         "C:\android\cocos2d-x-2.2\projects\LTest\proj.win32\Debug.win32\libcocos2d.lib"
+         "C:\android\cocos2d-x-2.2\projects\LTest\proj.win32\Debug.win32\libCocosDenshion.lib"
+         "C:\android\cocos2d-x-2.2\projects\LTest\proj.win32\Debug.win32\libExtensions.lib"
+         "C:\android\cocos2d-x-2.2\projects\LTest\proj.win32\Debug.win32\libBox2D.lib"
+         "C:\android\cocos2d-x-2.2\projects\LTest\proj.win32\Debug.win32\libchipmunk.lib"
+     1>AppDelegate.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/INCREMENTAL:NO' specification
+         LTest.vcxproj -> C:\android\cocos2d-x-2.2\projects\LTest\proj.win32\Debug.win32\LTest.exe
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\android\cocos2d-x-2.2\projects\LTest\proj.win32\Debug.win32\LTest.exe;#1" /manifest Debug.win32\LTest.exe.intermediate.manifest
+       FinalizeBuildStatus:
+         Deleting file "Debug.win32\LTest.unsuccessfulbuild".
+         Touching "Debug.win32\LTest.lastbuildstate".
+     1>Done Building Project "C:\android\cocos2d-x-2.2\projects\LTest\proj.win32\LTest.vcxproj" (build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:06.19
+Time Elapsed 00:00:05.75

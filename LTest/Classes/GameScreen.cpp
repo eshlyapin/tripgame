@@ -82,13 +82,16 @@ bool GameScreen::LoadObjects(const std::string& name)
 		if(objectName == "" || objectState == "" || x == NULL || y == NULL)
 		{
 			LOG_ERR("Can't load object " + objectName);
-			//return false;
+			listOfObjects.clear();
+			removeAllChildrenWithCleanup(true);
+			return false;
 		}
 		else
 		{
 			GameObject *ob = new GameObject(objectName, objectState);
 			addChild(ob);
 			ob->setPosition(x.as_int(), y.as_int());
+			listOfObjects.push_back(ob);
 		}
 		
 	}
