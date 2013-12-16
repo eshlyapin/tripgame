@@ -30,6 +30,7 @@ bool GameObject::LoadSprites(const std::string& name)
 	xml_document doc;
 	CreateXmlDocument(xmlPath.c_str(), doc);
 
+	mStrategy = LoadStrategy(doc);
 	for(xml_node state = doc.child("state"); state; state = state.next_sibling("state"))
 	{
 		string stateName = state.child("name").text().as_string();
@@ -53,9 +54,21 @@ GameObject::~GameObject()
 {
 }
 
-cocos2d::CCSprite* GameObject::GetCurrentSprite() const
+cocos2d::CCSprite* GameObject::GetCurrentSprite()
 {
-	return 0;
+	return mSpriteMap[mCurrentState];
+}
+
+ObjectStrategy* GameObject::LoadStrategy(pugi::xml_document& doc)
+{
+	string behavior = doc.child("behavior").text().as_string();
+	
+	if(behavior == "toggle")
+		return new ToggleStrategy(this);
+	else if(behavior == "collect")
+		return new CollectStrategy(this);
+	else
+		return 0;
 }
 
 bool GameObject::SetState(const string& name)
@@ -86,6 +99,20 @@ void GameObject::ShowCurrent()
 	mSpriteMap[mCurrentState]->setVisible(true);
 }
 	
+void GameObject::SetNextState()
+{
+	map<string, CCSprite*>::iterator iter = mSpriteMap.find(mCurrentState);
+	iter++;
+	if(iter != mSpriteMap.end())
+	{
+		SetState(iter->first);
+	}
+	else
+	{
+		SetState(mSpriteMap.begin()->first);
+	}
+}
+
 vector<CCSprite*> GameObject::GetSprites() const
 {
 	vector<CCSprite*> sprites;
@@ -109,7 +136,18 @@ void GameObject::ccTouchesEnded(CCSet* touches, CCEvent* event)
 void GameObject::OnClicked(const cocos2d::CCPoint& point)
 {
 	std::cout << "clicked: " << point.x << " " << point.y << std::endl;
-	Inventory::GetInstance().AddItems(this);
+	if(mStrategy != 0)
+	{
+		CCSprite* sprite = GetCurrentSprite();
+
+		CCRect box = sprite->boundingBox();
+		CCPoint pos = getPosition();
+
+		box.origin = box.origin + pos;
+
+		if(box.containsPoint(point))
+			mStrategy->OnClicked(point);
+	}
 }
 
 void GameObject::touchDelegateRelease()

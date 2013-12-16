@@ -1,0 +1,13 @@
+<behavior>collect</behavior>
+<name>
+  coin
+</name>
+<state>
+	<name>OnScreen</name>
+	<image>Coin.png</image>
+</state>
+
+<state>
+	<name>Collected</name>
+	<image>Coin-Inventory.png</image>
+</state>

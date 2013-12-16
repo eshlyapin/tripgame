@@ -1,15 +1,12 @@
+<behavior>toggle</behavior>
 <name>
   smile
 </name>
 <state>
 	<name>state1</name>
-	<image>SmileFace.png</image>
+	<image>SmileFace1.png</image>
 </state>
 <state>
 	<name>state2</name>
-	<image>CloseNormal.png</image>
-</state>
-<state>
-	<name>state3</name>
-	<image>CloseNormal.png</image>
+	<image>SmileFace2.png</image>
 </state>
