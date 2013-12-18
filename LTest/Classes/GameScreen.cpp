@@ -11,7 +11,6 @@ using namespace pugi;
 
 bool GameScreen::init()
 {
-
 	if( !CCScene::init() )
 		return false;
 	

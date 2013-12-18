@@ -2,6 +2,8 @@
 #include "inventory.h"
 #include "CCScheduler.h"
 #include <sstream>
+#include <GameMenu.h>
+#include <Log.h>
 using namespace cocos2d;
 using namespace std;
 
@@ -14,10 +16,9 @@ HUD::HUD()
 
 	int menuX = backButton->getNormalImage()->getContentSize().width/2;
 	int menuY = 50;
-
-	menu->setPosition(menuX, menuY);
-
-	addChild(menu);
+	menu->setPosition(menuX, menuY);	
+	//menu->alignItemsHorizontally();
+	addChild(menu, 1);
 
 	CreateInventory();
 }
@@ -35,12 +36,15 @@ HUD::~HUD()
 HUD& HUD::GetInstance()
 {
 	static HUD inst;
+	inst.scheduleUpdate();
 	return inst;
 }
 
 void HUD::BackCallBack(CCObject* pSender)
 {
 	//change scene
+	CCScene *mMenu = GameMenu::create();
+	CCDirector::sharedDirector()->replaceScene(mMenu);
 }
 
 
@@ -67,7 +71,7 @@ void HUD::CreateInventory()
 
 		addChild(cell);
 	}
-	scheduleUpdate();
+	//scheduleUpdate();
 }
 
 void HUD::update(float delta)
