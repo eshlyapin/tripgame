@@ -1,5 +1,6 @@
 #include "GameScreen.h"
 #include <vector>
+#include "ObjectFactory.h"
 #include "utils.h"
 #include "Log.h"
 #include "HUD.h"
@@ -88,7 +89,7 @@ bool GameScreen::LoadObjects(const std::string& name)
 		}
 		else
 		{
-			GameObject *ob = new GameObject(objectName, objectState);
+			GameObject *ob = ObjectFactory::Create(objectName, objectState);
 			addChild(ob);
 			ob->setPosition(x.as_int(), y.as_int());
 			listOfObjects.push_back(ob);

@@ -5,6 +5,8 @@
 <state>
 	<name>OnScreen</name>
 	<image>Coin.png</image>
+	<!-- <bbox x="0" y="0" w="5" h="5" /> -->
+	<!-- <bbox x="40" y="0" w="5" h="5" /> -->
 </state>
 
 <state>

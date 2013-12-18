@@ -10,15 +10,15 @@
     <Filter Include="Classes\Engine">
       <UniqueIdentifier>{303c23e7-8088-4e6a-8354-a0b9cf1acff0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\Engine\GameObjects">
+      <UniqueIdentifier>{f63bbc52-6a05-4905-b29e-0b1f3d28506c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>win32</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\AppDelegate.cpp">
-      <Filter>Classes\Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\GameObject.cpp">
       <Filter>Classes\Engine</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\GameScreen.cpp">
@@ -33,14 +33,26 @@
     <ClCompile Include="..\Classes\inventory.cpp">
       <Filter>Classes\Engine</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\ObjectStrategy.cpp">
-      <Filter>Classes\Engine</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\pugixml.cpp">
       <Filter>Classes\Engine</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\utils.cpp">
       <Filter>Classes\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameObject.cpp">
+      <Filter>Classes\Engine\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameObjectLoader.cpp">
+      <Filter>Classes\Engine\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ObjectState.cpp">
+      <Filter>Classes\Engine\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ObjectStrategy.cpp">
+      <Filter>Classes\Engine\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ObjectFactory.cpp">
+      <Filter>Classes\Engine\GameObjects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -48,9 +60,6 @@
       <Filter>win32</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\AppDelegate.h">
-      <Filter>Classes\Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\GameObject.h">
       <Filter>Classes\Engine</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\GameScreen.h">
@@ -68,9 +77,6 @@
     <ClInclude Include="..\Classes\Log.h">
       <Filter>Classes\Engine</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\ObjectStrategy.h">
-      <Filter>Classes\Engine</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\pugiconfig.hpp">
       <Filter>Classes\Engine</Filter>
     </ClInclude>
@@ -79,6 +85,21 @@
     </ClInclude>
     <ClInclude Include="..\Classes\utils.h">
       <Filter>Classes\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameObject.h">
+      <Filter>Classes\Engine\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameObjectLoader.h">
+      <Filter>Classes\Engine\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ObjectState.h">
+      <Filter>Classes\Engine\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ObjectStrategy.h">
+      <Filter>Classes\Engine\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ObjectFactory.h">
+      <Filter>Classes\Engine\GameObjects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

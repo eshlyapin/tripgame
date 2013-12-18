@@ -4,24 +4,30 @@
 #include "cocos2d.h"
 #include "pugixml.hpp"
 #include "ObjectStrategy.h"
+#include "ObjectState.h"
 #include <list>
 #include <map>
 #include <string>
 
+
 class GameObject : public cocos2d::CCNode, public cocos2d::CCStandardTouchDelegate//cocos2d::CCTargetedTouchDelegate
 {
-	std::map<std::string, cocos2d::CCSprite*> mSpriteMap;
+
+	std::vector<ObjectState> mStateMap;
 	std::string mCurrentState;
 	std::string mName;
 	ObjectStrategy* mStrategy;
+
 	
 	ObjectStrategy* LoadStrategy(pugi::xml_document& doc);
 	bool LoadSprites(const std::string& name);
 	void HideAll();
 	void ShowCurrent();
 public:
-	GameObject(const std::string& name, const std::string& currentState);
+	GameObject(const std::string& name,std::vector<ObjectState>& states, const std::string& currentState);
 	virtual ~GameObject();
+
+	void SetStrategy(ObjectStrategy* strategy);
 
 	bool SetState(const std::string& name);
 	void SetNextState();
