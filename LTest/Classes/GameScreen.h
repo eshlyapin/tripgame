@@ -1,6 +1,7 @@
 #ifndef GAME_SCREEN_H
 #define GAME_SCREEN_H
 
+#include "GameScene.h"
 #include "GameObject.h"
 #include "InputLayer.h"
 
@@ -11,17 +12,15 @@
 class GameScreen;
 typedef std::vector<GameScreen*> ScreenArray;
 
-class GameScreen : public cocos2d::CCScene
+class GameScreen : public GameScene
 {
 	std::vector<GameObject*> listOfObjects;
-	bool LoadObjects(const std::string& name);
-	std::string GetBackgroundPath(const pugi::xml_document& doc);
+	bool LoadObjects(const std::string& name);	
 protected:
 	cocos2d::CCLayer* mBackgroundLayer;
 	ObjectLayer* mObjectLayer;
 
-	GameScreen() {}
-	cocos2d::CCLayer* LoadBackground(const std::string& file);
+	GameScreen() {}	
 public:    
 
 	virtual bool init();  
