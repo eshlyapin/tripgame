@@ -25,6 +25,6 @@ void CollectStrategy::OnClicked(const cocos2d::CCPoint& point)
 		if(mObject->SetState("Collected"))
 			Inventory::GetInstance().AddItems(mObject);
 		else
-			LOG_ERR("ITEM HAS NOT COLLECTABLE STATE!");
+			Logger.log(Log::Prioritiy_ERROR, "ITEM HAS NOT COLLECTABLE STATE!");
 	}
 }

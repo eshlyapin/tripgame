@@ -16,7 +16,7 @@ bool GameScreen::init()
 	
 
 	if(!LoadObjects("main"))
-		LOG_ERR("Can't load game object!");
+		Logger.log(Log::Prioritiy_ERROR, "Can't load game object!");
 
 	return true;
 }
@@ -39,7 +39,7 @@ bool GameScreen::LoadObjects(const std::string& name)
 
 	if(backgroundPath == "")
 	{
-		LOG_ERR("Can't load background!");
+		Logger.log(Log::Prioritiy_ERROR, "Can't load background");
 		return false;
 	}
 	else
@@ -61,7 +61,7 @@ bool GameScreen::LoadObjects(const std::string& name)
 		
 		if(objectName == "" || objectState == "" || x == NULL || y == NULL)
 		{
-			LOG_ERR("Can't load object " + objectName);
+			Logger.log(Log::Prioritiy_ERROR, "Can't load object " + objectName);
 			listOfObjects.clear();
 			removeAllChildrenWithCleanup(true);
 			return false;

@@ -6,14 +6,16 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <string>
+#include "Log.h"
 
 USING_NS_CC;
 
 int main(int argc, char **argv)
 {
     // create the application instance
+    Logger.log(Log::Prioritiy_INFO, "All right");
     AppDelegate app;
     CCEGLView* eglView = CCEGLView::sharedOpenGLView();
-    eglView->setFrameSize(800, 480);
+    eglView->setFrameSize(480, 320);
     return CCApplication::sharedApplication()->run();
 }

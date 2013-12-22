@@ -19,7 +19,7 @@ GameObject::GameObject(const std::string& name,std::vector<ObjectState>& states,
 		addChild(mStateMap[i].mSprite);
 	}
 	if(!SetState(currentState))
-		LOG_ERR("State is not found: " + currentState);
+		Logger.log(Log::Prioritiy_INFO, "State is not found: " + currentState);
 }
 
 

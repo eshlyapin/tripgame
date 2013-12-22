@@ -18,7 +18,7 @@ GameObject* ObjectFactory::Create(const string& name, const string& curState)
 
 	GameObjectLoader loader(doc);
 	if (!loader.Load())
-		LOG_ERR("Can't load object " + name);
+		Logger.log(Log::Prioritiy_ERROR, "Can't load object " + name);
 	
 
 	vector<ObjectState> states = loader.GetObjectStates();
