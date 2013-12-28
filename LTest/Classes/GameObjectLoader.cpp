@@ -14,7 +14,6 @@ GameObjectLoader::GameObjectLoader(xml_document& doc)
 
 bool GameObjectLoader::Load()
 {	
-	mBehavior = ReadObjectBehavior();
 	for(xml_node xmlState = mDocument.child("state"); xmlState; xmlState = xmlState.next_sibling("state"))
 	{
 		CCSprite* sprite = ReadStateSprite(xmlState);
@@ -59,10 +58,6 @@ vector<CCRect> GameObjectLoader::ReadStateBBoxes(xml_node& node)
 	return bboxes;
 }
 
-std::string GameObjectLoader::ReadObjectBehavior()
-{
-	return mDocument.child("behavior").text().as_string();
-}
 
 vector<ObjectState> GameObjectLoader::GetObjectStates()
 {

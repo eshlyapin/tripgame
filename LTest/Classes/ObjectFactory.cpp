@@ -22,17 +22,5 @@ GameObject* ObjectFactory::Create(const string& name, const string& curState)
 	
 
 	vector<ObjectState> states = loader.GetObjectStates();
-
-	GameObject* gameObject = new GameObject(name, states, curState);
-
-	string behavior = loader.GetObjectBehavior();
-	ObjectStrategy* strategy = 0;
-	if(behavior == "toggle")
-		strategy = new ToggleStrategy(gameObject);
-	else if(behavior == "collect")
-		strategy = new CollectStrategy(gameObject);
-
-	gameObject->SetStrategy(strategy);
-
-	return gameObject;	
+	return new GameObject(name, states, curState);
 }

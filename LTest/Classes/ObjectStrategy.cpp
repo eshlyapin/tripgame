@@ -3,27 +3,25 @@
 #include "inventory.h"
 #include "Log.h"
 
-ToggleStrategy::ToggleStrategy(GameObject* object)
-	:ObjectStrategy(object)
+ToggleStrategy::ToggleStrategy()
 {
 }
 
-void ToggleStrategy::OnClicked(const cocos2d::CCPoint& point)
+void ToggleStrategy::OnClicked(GameObject* owner, const cocos2d::CCPoint& point)
 {
-	mObject->SetNextState();
+	owner->SetNextState();
 }
 
-CollectStrategy::CollectStrategy(GameObject* object)
-	:ObjectStrategy(object)
+CollectStrategy::CollectStrategy()
 {
 }
 
-void CollectStrategy::OnClicked(const cocos2d::CCPoint& point)
+void CollectStrategy::OnClicked(GameObject* owner, const cocos2d::CCPoint& point)
 {
-	if(mObject->GetCurrentState() != "Collected")
+	if(owner->GetCurrentState() != "Collected")
 	{
-		if(mObject->SetState("Collected"))
-			Inventory::GetInstance().AddItems(mObject);
+		if(owner->SetState("Collected"))
+			Inventory::GetInstance().AddItems(owner);
 		else
 			Logger.log(Log::Prioritiy_ERROR, "ITEM HAS NOT COLLECTABLE STATE!");
 	}

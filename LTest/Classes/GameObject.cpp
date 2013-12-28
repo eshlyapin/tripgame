@@ -118,7 +118,7 @@ void GameObject::OnClicked(const cocos2d::CCPoint& point)
 					box.origin = box.origin + pos;
 
 					if(box.containsPoint(point))
-						mStrategy->OnClicked(point);
+						mStrategy->OnClicked(this, point);
 				}
 				else
 				{
@@ -136,7 +136,7 @@ void GameObject::OnClicked(const cocos2d::CCPoint& point)
 
 						if(box.containsPoint(point))
 						{
-							mStrategy->OnClicked(point);
+							mStrategy->OnClicked(this, point);
 							break;
 						}
 					}

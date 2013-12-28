@@ -9,13 +9,13 @@ using namespace std;
 using namespace cocos2d;
 using namespace pugi;
 
-bool GameScreen::init()
+bool GameScreen::init(const string& scenename)
 {
 	if( !CCScene::init() )
 		return false;
 	
 
-	if(!LoadObjects("main"))
+	if(!LoadObjects(scenename))
 		Logger.log(Log::Prioritiy_ERROR, "Can't load game object!");
 
 	return true;
@@ -62,7 +62,7 @@ bool GameScreen::LoadObjects(const std::string& name)
 		if(objectName == "" || objectState == "" || x == NULL || y == NULL)
 		{
 			Logger.log(Log::Prioritiy_ERROR, "Can't load object " + objectName);
-			listOfObjects.clear();
+			mObjectsArray.clear();
 			removeAllChildrenWithCleanup(true);
 			return false;
 		}
@@ -71,9 +71,43 @@ bool GameScreen::LoadObjects(const std::string& name)
 			GameObject *ob = ObjectFactory::Create(objectName, objectState);
 			addChild(ob);
 			ob->setPosition(x.as_int(), y.as_int());
-			listOfObjects.push_back(ob);
+			mObjectsArray.push_back(ob);
 		}
 		
 	}
 	return true;
+}
+
+std::vector<GameObject*> GameScreen::GetObjectArrayByName(const std::string& name)
+{
+	GameObjectArray retArray;
+	for(size_t i = 0; i < mObjectsArray.size(); ++i)
+	{
+		if(mObjectsArray[i]->GetName() == name)
+			retArray.push_back(mObjectsArray[i]);
+	}
+	return retArray;
+}
+
+GameObject* GameScreen::GetObjectByName(const std::string& name)
+{
+	for(size_t i = 0; i < mObjectsArray.size(); ++i)
+	{
+		if(mObjectsArray[i]->GetName() == name)
+			return mObjectsArray[i];
+	}
+	return 0;
+}
+
+void GameScreen::SetStrategyToGroup(GameObjectArray& group, ObjectStrategy* strategy)
+{
+	for(size_t i = 0; i < group.size(); ++i)
+	{
+		group[i]->SetStrategy(strategy);
+	}
+}
+
+void GameScreen::SetStrategyToGroup(const std::string& name, ObjectStrategy* strategy)
+{
+	SetStrategyToGroup(GetObjectArrayByName(name), strategy);
 }

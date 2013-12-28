@@ -6,15 +6,12 @@ class GameObject;
 
 class ObjectStrategy
 {
-protected:
-	GameObject* mObject;
 public:
-	ObjectStrategy(GameObject* object)
-		:mObject(object)
+	ObjectStrategy()
 	{
 	}
 
-	virtual void OnClicked(const cocos2d::CCPoint& point) = 0;
+	virtual void OnClicked(GameObject* owner, const cocos2d::CCPoint& point) = 0;
 
 	//The following methods are same...
 	//virtual void OnMoved() = 0;
@@ -23,15 +20,15 @@ public:
 class ToggleStrategy : public ObjectStrategy
 {
 public:
-	ToggleStrategy(GameObject* object);
-	void OnClicked(const cocos2d::CCPoint& point);
+	ToggleStrategy();
+	void OnClicked(GameObject* owner, const cocos2d::CCPoint& point);
 };
 
 class CollectStrategy : public ObjectStrategy
 {
 public:
-	CollectStrategy(GameObject* object);
-	void OnClicked(const cocos2d::CCPoint& point);
+	CollectStrategy();
+	void OnClicked(GameObject* owner, const cocos2d::CCPoint& point);
 };
 
 #endif

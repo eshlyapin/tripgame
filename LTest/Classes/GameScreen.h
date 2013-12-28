@@ -14,19 +14,20 @@ typedef std::vector<GameScreen*> ScreenArray;
 
 class GameScreen : public GameScene
 {
-	std::vector<GameObject*> listOfObjects;
 	bool LoadObjects(const std::string& name);	
 protected:
+	GameObjectArray mObjectsArray;
 	cocos2d::CCLayer* mBackgroundLayer;
-	ObjectLayer* mObjectLayer;
-
 	GameScreen() {}	
 public:    
 
-	virtual bool init();  
-	virtual ~GameScreen();
-
-	CREATE_FUNC(GameScreen);
+	virtual bool init(const std::string& scenename);  
+	virtual ~GameScreen() = 0;
+	
+	GameObjectArray				GetObjectArrayByName(const std::string& name);
+	GameObject*					GetObjectByName(const std::string& name);
+	void						SetStrategyToGroup(GameObjectArray& group, ObjectStrategy* strategy);
+	void						SetStrategyToGroup(const std::string& name, ObjectStrategy* strategy);
 };
 
 #endif

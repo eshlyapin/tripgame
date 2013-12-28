@@ -48,5 +48,6 @@ public:
 
 
 typedef std::list<GameObject*> GameObjectList;
+typedef std::vector<GameObject*> GameObjectArray;
 
 #endif

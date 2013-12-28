@@ -8,7 +8,7 @@
 
 #include <iostream>
 #include <fstream>
-using namespace std;
+#include <string>
 
 class Log
 {
@@ -28,14 +28,14 @@ public:
 		return mInstance;
 	}
 
-	static void log(Priorities priority, const string& message);
+	static void log(Priorities priority, const std::string& message);
 private:
 	Log();
 	Log(const Log& root);
 	Log& operator=(const Log&);
 
 	static bool begin;
-	static string mPath;
+	static std::string mPath;
 };
 
 #endif

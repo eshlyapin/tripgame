@@ -18,7 +18,8 @@ class Inventory
 public:
 
 	static Inventory& GetInstance();
-	
+
+	void			Clear();
 	bool			AddItems(GameObject* object);
 	GameObjectList	GetItem(const std::string& name);
 	GameObjectList	GetItem(size_t index);

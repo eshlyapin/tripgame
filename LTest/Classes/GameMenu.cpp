@@ -1,6 +1,7 @@
 #include "GameMenu.h"
-#include "GameScreen.h"
+#include "Sample\SampleScene.h"
 #include "Log.h"
+#include "inventory.h"
 using namespace cocos2d;
 using namespace std;
 
@@ -27,7 +28,8 @@ bool GameMenu::init()
 
 void GameMenu::startGameCallBack(CCObject* pSender)
 {
-	CCScene *pScene = GameScreen::create(); 
+	CCScene *pScene = SampleScene::create();
+	Inventory::GetInstance().Clear();
 	CCDirector::sharedDirector()->replaceScene(pScene);	
 }
 void GameMenu::endGameCallBack(CCObject* pSender)

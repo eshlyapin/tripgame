@@ -58,3 +58,8 @@ GameObjectList Inventory::GetItem(size_t index)
 	else
 		return GameObjectList();
 }
+
+void Inventory::Clear()
+{
+	mCells.clear();
+}
