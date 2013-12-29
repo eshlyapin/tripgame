@@ -17,7 +17,6 @@ HUD::HUD()
 	int menuX = backButton->getNormalImage()->getContentSize().width/2;
 	int menuY = 50;
 	menu->setPosition(menuX, menuY);	
-	//menu->alignItemsHorizontally();
 	addChild(menu, 1);
 
 	CreateInventory();

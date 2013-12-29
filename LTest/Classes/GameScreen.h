@@ -3,7 +3,6 @@
 
 #include "GameScene.h"
 #include "GameObject.h"
-#include "InputLayer.h"
 
 #include "cocos2d.h"
 #include <vector>

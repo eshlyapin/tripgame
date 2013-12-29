@@ -136,6 +136,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\HUD.cpp" />
     <ClCompile Include="..\Classes\inventory.cpp" />
     <ClCompile Include="..\Classes\Log.cpp" />
+    <ClCompile Include="..\Classes\MessageBox.cpp" />
     <ClCompile Include="..\Classes\ObjectFactory.cpp" />
     <ClCompile Include="..\Classes\ObjectState.cpp" />
     <ClCompile Include="..\Classes\ObjectStrategy.cpp" />
@@ -154,6 +155,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\HUD.h" />
     <ClInclude Include="..\Classes\inventory.h" />
     <ClInclude Include="..\Classes\Log.h" />
+    <ClInclude Include="..\Classes\MessageBox.h" />
     <ClInclude Include="..\Classes\ObjectFactory.h" />
     <ClInclude Include="..\Classes\ObjectState.h" />
     <ClInclude Include="..\Classes\ObjectStrategy.h" />

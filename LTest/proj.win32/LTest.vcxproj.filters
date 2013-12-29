@@ -49,6 +49,9 @@
     <ClCompile Include="..\Classes\Sample\SampleScene.cpp">
       <Filter>Sample</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\MessageBox.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\GameObject.h">
@@ -101,6 +104,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Sample\SampleScene.h">
       <Filter>Sample</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\MessageBox.h">
+      <Filter>Engine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
