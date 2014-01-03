@@ -50,7 +50,7 @@
       <Filter>Sample</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\MessageBox.cpp">
-      <Filter>Engine</Filter>
+      <Filter>Engine\GameScenes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -106,7 +106,7 @@
       <Filter>Sample</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\MessageBox.h">
-      <Filter>Engine</Filter>
+      <Filter>Engine\GameScenes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

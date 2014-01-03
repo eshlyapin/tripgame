@@ -11,7 +11,7 @@ ToggleStrategy::ToggleStrategy()
 void ToggleStrategy::OnClicked(GameObject* owner, const cocos2d::CCPoint& point)
 {
 	owner->SetNextState();
-	MBox *bBox = new MBox("You clicked on " + owner->GetName());//for test
+	MBox *mbox = MBox::createWithText("You clicked on " + owner->GetName() + " ! ! ! ! ! ! ! ! ! ! ! !");//for test
 }
 
 CollectStrategy::CollectStrategy()

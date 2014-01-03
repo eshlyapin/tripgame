@@ -2,14 +2,17 @@
 #define MESSAGEBOX_H
 
 #include "cocos2d.h"
-class MBox : public cocos2d::CCLayer
+#include "GameScene.h"
+class MBox : public GameScene
 {
 	cocos2d::CCLabelTTF *label;	
 protected:	
 	void showText(const std::string &);
 public: 
 	void OKCallBack(CCObject* pSender);
-	MBox(const std::string&); 		
+	MBox(){}
+	bool initWithText(const std::string& str);
+	static MBox* createWithText(const std::string& str);
 	virtual ~MBox();
 };
 
