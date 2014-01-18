@@ -1,5 +1,7 @@
 #include "inventory.h"
+#include "ObjectFactory.h"
 #include <algorithm>
+
 using namespace std;
 
 Inventory::Inventory()
@@ -17,46 +19,64 @@ bool Inventory::AddItems(GameObject* object)
 {
 	for(size_t i = 0; i < mCells.size(); ++i)
 	{
-		GameObjectList objs = mCells[i];
-		if(objs.front()->GetName() == object->GetName())
+		string currentName = mCells[i].first;
+		if(currentName == object->GetName())
 		{
-			objs.push_back(object);
-			mCells[i] = objs;
+			object->removeFromParent();
+			mCells[i].second++;
 			return true;
 		}
 	}
 
-	if(mCells.size() < CellsCount)
+	if( mCells.size() < CellsCount )
 	{
-		GameObjectList objs;
-		objs.push_back(object);
-		mCells.push_back(objs);
+		mCells.push_back(pair<string,size_t>(object->GetName(),1));
+		object->removeFromParent();
 		return true;
 	}
-
 	return false;
 }
 
-GameObjectList Inventory::GetItem(const std::string& name)
+GameObject* Inventory::GetItem(const std::string& name)
 {
 	for(size_t i = 0; i < mCells.size(); ++i)
 	{
-		GameObjectList objs = mCells[i];
-		if(objs.front()->GetName() == name)
+		string currentName = mCells[i].first;
+		if(currentName == name)
 		{
-			return mCells[i];
+			return ObjectFactory::Create(currentName, "Collected");
 		}
 	}
-	return GameObjectList();
+	return 0;
 }
 
 
-GameObjectList Inventory::GetItem(size_t index)
+GameObject* Inventory::GetItem(size_t index)
 {
-	if(index < mCells.size())
-		return mCells[index];
-	else
-		return GameObjectList();
+	if(mCells.size() <= index)
+		return 0;
+	string objectName = mCells[index].first;
+	return ObjectFactory::Create(objectName, "Collected");
+}
+
+size_t Inventory::GetItemCount(const std::string& name)
+{
+	for(size_t i = 0; i < mCells.size(); ++i)
+	{
+		string currentName = mCells[i].first;
+		if(currentName == name)
+		{
+			return mCells[i].second;
+		}
+	}
+	return 0;
+}
+
+size_t Inventory::GetItemCount(size_t index)
+{
+	if(mCells.size() <= index)
+		return 0;
+	return mCells[index].second;
 }
 
 void Inventory::Clear()

@@ -1,6 +1,7 @@
 #include "GameScreen.h"
 #include <vector>
 #include "ObjectFactory.h"
+#include "inventory.h"
 #include "utils.h"
 #include "Log.h"
 #include "HUD.h"
@@ -8,6 +9,8 @@
 using namespace std;
 using namespace cocos2d;
 using namespace pugi;
+
+
 
 bool GameScreen::init(const string& scenename)
 {
@@ -49,7 +52,7 @@ bool GameScreen::LoadObjects(const std::string& name)
 	}
 	
 	//FFFUUUUuu~
-	addChild(&HUD::GetInstance());
+	addChild(HUD::create());
 
 	for(xml_node object = doc.child("object"); object; object = object.next_sibling("object"))
 	{

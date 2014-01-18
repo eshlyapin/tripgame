@@ -22,5 +22,5 @@ GameObject* ObjectFactory::Create(const string& name, const string& curState)
 	
 
 	vector<ObjectState> states = loader.GetObjectStates();
-	return new GameObject(name, states, curState);
+	return GameObject::create(name, states, curState);
 }

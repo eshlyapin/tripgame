@@ -179,3 +179,18 @@ void GameObject::onExit()
    CCNode::onExit();
 }    
 
+
+GameObject* GameObject::create(const std::string& name,std::vector<ObjectState>& states, const std::string& currentState)
+{
+	GameObject* res = new GameObject(name, states, currentState);
+	if(res->init())
+	{
+		res->autorelease();
+		return res;
+	}
+	else
+	{
+		delete res;
+		return 0;
+	}
+}

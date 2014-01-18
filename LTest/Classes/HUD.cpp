@@ -10,6 +10,10 @@ using namespace std;
 
 HUD::HUD()
 {
+}
+
+bool HUD::init()
+{
 	CCMenuItemImage* backButton = CCMenuItemImage::create("HUD/BackButton.png","HUD/BackButton.png","HUD/BackButton.png", this, menu_selector(HUD::BackCallBack));
 
 	CCMenu* menu = CCMenu::create(backButton, NULL);
@@ -20,24 +24,15 @@ HUD::HUD()
 	addChild(menu, 1);
 
 	CreateInventory();
+	scheduleUpdate();
+	return true;
 }
 
 HUD::~HUD()
 {
 	removeAllChildrenWithCleanup(true);
-	for(size_t i = 0; i < mCells.size(); ++i)
-	{
-		delete mCells[i];
-		mCells[i] = 0;
-	}
 }
 
-HUD& HUD::GetInstance()
-{
-	static HUD inst;
-	inst.scheduleUpdate();
-	return inst;
-}
 
 void HUD::BackCallBack(CCObject* pSender)
 {
@@ -59,11 +54,9 @@ void HUD::CreateInventory()
 	int startX = center - (inventoryWidth/2) + (cellSize/2);
 
 	for(size_t i = 0; i < CellCount; ++i)
-	{	
-		CCSprite* cellSprt = CCSprite::create("HUD/invCell.png");
-
+	{
 		float x = startX + cellSize * i;
-		InventoryCell *cell = new InventoryCell(cellSprt);
+		InventoryCell *cell = InventoryCell::create();
 		cell->setPosition(ccp(x, inventoryY));
 		
 		mCells.push_back(cell);
@@ -77,28 +70,32 @@ void HUD::update(float delta)
 {
 	for(size_t i = 0; i < mCells.size(); ++i)
 	{
-		GameObjectList objs = Inventory::GetInstance().GetItem(i);
-		mCells[i]->mCountElements = objs.size();
+		GameObject* object = Inventory::GetInstance().GetItem(i);
+		mCells[i]->mCountElements = Inventory::GetInstance().GetItemCount(i);
 
-		if(objs.size() > 0)
-		{			
-			GameObjectList::iterator it = objs.begin();
-
+		if(object != 0)
+		{
+			if(object->getParent() == 0)
+			{
+				addChild(object);
+			}
 			CCPoint pos = mCells[i]->getPosition();
-			(*it)->setPosition(pos);
-			it++;
-
-			for(it; it != objs.end(); ++it)
-				(*it)->setVisible(false);
+			object->setPosition(pos);
 		}
 	}
 }
 
-InventoryCell::InventoryCell(CCSprite* sprite)
-	:mCell(sprite),
-	mCountElements(0)
+InventoryCell::InventoryCell()
+	:mCountElements(0)
 {
+
+}
+
+bool InventoryCell::init()
+{	
 	const int LABEL_OFFSET = -30;
+	
+	mCell = CCSprite::create("HUD/invCell.png");
 	addChild(mCell);
 
 	mLabel = CCLabelTTF::create(".","Arial", 20.f);
@@ -106,6 +103,7 @@ InventoryCell::InventoryCell(CCSprite* sprite)
 	addChild(mLabel);
 
 	scheduleUpdate();
+	return true;
 }
 
 void InventoryCell::update(float dt)

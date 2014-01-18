@@ -10,22 +10,28 @@ struct InventoryCell : public cocos2d::CCNode
 	cocos2d::CCLabelTTF* mLabel;
 	size_t mCountElements;
 
-	InventoryCell(cocos2d::CCSprite* sprite);
+	InventoryCell();
 	void update(float dt);
+
+	bool init();
+
+	CREATE_FUNC(InventoryCell);
 };
 
 class HUD : public cocos2d::CCLayer
 {
-	HUD();
 
 	std::vector<InventoryCell*> mCells;
 	void CreateInventory();
 public:
+	HUD();
 	~HUD();
-	static HUD& GetInstance();
 
+	bool init();
 	void update(float delta);
 	void BackCallBack(CCObject* pSender);
+
+	CREATE_FUNC(HUD);
 };
 
 #endif

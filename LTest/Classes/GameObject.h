@@ -23,8 +23,9 @@ class GameObject : public cocos2d::CCNode, public cocos2d::CCStandardTouchDelega
 	bool LoadSprites(const std::string& name);
 	void HideAll();
 	void ShowCurrent();
-public:
 	GameObject(const std::string& name,std::vector<ObjectState>& states, const std::string& currentState);
+public:
+	static GameObject* create(const std::string& name,std::vector<ObjectState>& states, const std::string& currentState);
 	virtual ~GameObject();
 
 	void SetStrategy(ObjectStrategy* strategy);

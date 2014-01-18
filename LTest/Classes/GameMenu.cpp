@@ -29,7 +29,6 @@ bool GameMenu::init()
 void GameMenu::startGameCallBack(CCObject* pSender)
 {
 	CCScene *pScene = SampleScene::create();
-	Inventory::GetInstance().Clear();
 	CCDirector::sharedDirector()->replaceScene(pScene);	
 }
 void GameMenu::endGameCallBack(CCObject* pSender)

@@ -66,9 +66,6 @@
     <ClInclude Include="..\Classes\ObjectState.h">
       <Filter>Engine\GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\ObjectFactory.h">
-      <Filter>Engine\GameScenes</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\GameScreen.h">
       <Filter>Engine\GameScenes</Filter>
     </ClInclude>
@@ -107,6 +104,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\MessageBox.h">
       <Filter>Engine\GameScenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ObjectFactory.h">
+      <Filter>Engine\GameObjects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

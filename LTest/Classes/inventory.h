@@ -12,8 +12,8 @@ class Inventory
 	//need to investigate this topic
 
 	static const size_t CellsCount = 3;
-	std::vector<GameObjectList> mCells;
-
+	std::vector< std::pair<std::string, size_t> > mCells;
+	
 	Inventory();
 public:
 
@@ -21,8 +21,10 @@ public:
 
 	void			Clear();
 	bool			AddItems(GameObject* object);
-	GameObjectList	GetItem(const std::string& name);
-	GameObjectList	GetItem(size_t index);
+	GameObject*		GetItem(const std::string& name);
+	GameObject*		GetItem(size_t index);
+	size_t			GetItemCount(const std::string& name);
+	size_t			GetItemCount(size_t index);
 	size_t			GetSize() const {return CellsCount;}
 };
 #endif
