@@ -2,6 +2,12 @@
 <name>HelloWorld.png</name>
 </background>
 <object>
+<name>door</name>
+<state>closed</state>
+<xpos>370</xpos>
+<ypos>90</ypos>
+</object>
+<object>
 <name>smile</name>
 <state>state1</state>
 <xpos>240</xpos>

@@ -52,6 +52,9 @@
     <ClCompile Include="..\Classes\MessageBox.cpp">
       <Filter>Engine\GameScenes</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Sample\ClickableStrategy.cpp">
+      <Filter>Sample</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\GameObject.h">
@@ -107,6 +110,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\ObjectFactory.h">
       <Filter>Engine\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Sample\ClickableStrategy.h">
+      <Filter>Sample</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

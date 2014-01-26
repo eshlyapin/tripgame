@@ -1,0 +1,11 @@
+<name>
+  door
+</name>
+<state>
+	<name>closed</name>
+	<image>closedoor.png</image>
+</state>
+<state>
+	<name>opened</name>
+	<image>opendoor.png</image>
+</state>

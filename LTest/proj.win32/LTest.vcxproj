@@ -141,6 +141,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\ObjectState.cpp" />
     <ClCompile Include="..\Classes\ObjectStrategy.cpp" />
     <ClCompile Include="..\Classes\pugixml.cpp" />
+    <ClCompile Include="..\Classes\Sample\ClickableStrategy.cpp" />
     <ClCompile Include="..\Classes\Sample\SampleScene.cpp" />
     <ClCompile Include="..\Classes\utils.cpp" />
     <ClCompile Include="main.cpp" />
@@ -161,6 +162,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\ObjectStrategy.h" />
     <ClInclude Include="..\Classes\pugiconfig.hpp" />
     <ClInclude Include="..\Classes\pugixml.hpp" />
+    <ClInclude Include="..\Classes\Sample\ClickableStrategy.h" />
     <ClInclude Include="..\Classes\Sample\SampleScene.h" />
     <ClInclude Include="..\Classes\utils.h" />
     <ClInclude Include="main.h" />
