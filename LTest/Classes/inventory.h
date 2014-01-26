@@ -7,24 +7,40 @@
 
 class Inventory
 {
+public:
+	class InventoryItem
+	{
+		std::vector<GameObject*> mObjects;
+		std::string mName;
+		GameObject* mObjectToDraw;
+
+	public:
+						InventoryItem(const std::string& name);
+						~InventoryItem();
+		std::string		GetName();		
+		bool			AddItem(GameObject* object);
+		size_t			GetObjectsCount();
+		GameObject*		GetCollectableGameObject();
+	};
+private:
+
 	//TODO: Probably following container is
 	//not good choice for inventory,
 	//need to investigate this topic
 
 	static const size_t CellsCount = 3;
-	std::vector< std::pair<std::string, size_t> > mCells;
+	std::vector<InventoryItem> mItems;
 	
 	Inventory();
 public:
 
 	static Inventory& GetInstance();
 
-	void			Clear();
-	bool			AddItems(GameObject* object);
-	GameObject*		GetItem(const std::string& name);
-	GameObject*		GetItem(size_t index);
-	size_t			GetItemCount(const std::string& name);
-	size_t			GetItemCount(size_t index);
-	size_t			GetSize() const {return CellsCount;}
+	void						Clear();
+	bool						AddItem(GameObject* object);
+	size_t						GetItemCount(const std::string& name);
+
+	std::vector<InventoryItem>	GetInvenotryItems() const {return mItems;}
+	size_t						GetSize() const {return CellsCount;}
 };
 #endif

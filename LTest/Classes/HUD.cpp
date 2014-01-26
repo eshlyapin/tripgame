@@ -68,10 +68,11 @@ void HUD::CreateInventory()
 
 void HUD::update(float delta)
 {
-	for(size_t i = 0; i < mCells.size(); ++i)
+	vector<Inventory::InventoryItem> items = Inventory::GetInstance().GetInvenotryItems();
+	for(size_t i = 0; i < items.size(); ++i)
 	{
-		GameObject* object = Inventory::GetInstance().GetItem(i);
-		mCells[i]->mCountElements = Inventory::GetInstance().GetItemCount(i);
+		GameObject* object = items[i].GetCollectableGameObject();
+		mCells[i]->mCountElements = items[i].GetObjectsCount();
 
 		if(object != 0)
 		{

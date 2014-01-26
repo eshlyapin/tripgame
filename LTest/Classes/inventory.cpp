@@ -15,71 +15,72 @@ Inventory& Inventory::GetInstance()
 	return inst;
 }
 
-bool Inventory::AddItems(GameObject* object)
+bool Inventory::AddItem(GameObject* object)
 {
-	for(size_t i = 0; i < mCells.size(); ++i)
+	for(size_t i = 0; i < mItems.size(); ++i)
 	{
-		string currentName = mCells[i].first;
-		if(currentName == object->GetName())
-		{
-			object->removeFromParent();
-			mCells[i].second++;
+		if (mItems[i].AddItem(object))
 			return true;
-		}
 	}
 
-	if( mCells.size() < CellsCount )
+	if( mItems.size() < CellsCount )
 	{
-		mCells.push_back(pair<string,size_t>(object->GetName(),1));
-		object->removeFromParent();
+		InventoryItem item(object->GetName());
+		item.AddItem(object);
+
+		mItems.push_back(item);
 		return true;
 	}
 	return false;
 }
 
-GameObject* Inventory::GetItem(const std::string& name)
-{
-	for(size_t i = 0; i < mCells.size(); ++i)
-	{
-		string currentName = mCells[i].first;
-		if(currentName == name)
-		{
-			return ObjectFactory::Create(currentName, "Collected");
-		}
-	}
-	return 0;
-}
-
-
-GameObject* Inventory::GetItem(size_t index)
-{
-	if(mCells.size() <= index)
-		return 0;
-	string objectName = mCells[index].first;
-	return ObjectFactory::Create(objectName, "Collected");
-}
-
 size_t Inventory::GetItemCount(const std::string& name)
 {
-	for(size_t i = 0; i < mCells.size(); ++i)
-	{
-		string currentName = mCells[i].first;
-		if(currentName == name)
-		{
-			return mCells[i].second;
-		}
-	}
+	for(size_t i = 0; i < mItems.size(); ++i)
+		if(mItems[i].GetName() == name)
+			return mItems[i].GetObjectsCount();
 	return 0;
-}
-
-size_t Inventory::GetItemCount(size_t index)
-{
-	if(mCells.size() <= index)
-		return 0;
-	return mCells[index].second;
 }
 
 void Inventory::Clear()
 {
-	mCells.clear();
+	mItems.clear();
+}
+
+Inventory::InventoryItem::~InventoryItem()
+{
+	//for(size_t i = 0; i < mObjects.size(); ++i)
+		//mObjects[i]->release();
+	//mObjectToDraw->release();
+}
+Inventory::InventoryItem::InventoryItem(const std::string& name)
+	:mName(name)
+{
+	mObjectToDraw = ObjectFactory::Create(name, "Collected");
+	mObjectToDraw->retain();
+}
+
+std::string Inventory::InventoryItem::GetName()
+{
+	return mName;
+}
+
+bool Inventory::InventoryItem::AddItem(GameObject* object)
+{
+	if(object->GetName() != mName)
+		return false;
+	object->removeFromParent();
+	object->retain();
+	mObjects.push_back(object);
+	return true;
+}
+
+size_t Inventory::InventoryItem::GetObjectsCount()
+{
+	return mObjects.size();
+}
+
+GameObject* Inventory::InventoryItem::GetCollectableGameObject()
+{
+	return mObjectToDraw;
 }

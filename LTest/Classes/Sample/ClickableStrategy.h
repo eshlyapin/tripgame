@@ -1,6 +1,6 @@
 #ifndef _CLICKABLESTRATEGY_H
 #define _CLICKABLESTRATEGY_H
-#include "c:\cocos2d-x-2.2\projects\ltest\classes\objectstrategy.h" //0_o
+#include "objectstrategy.h"
 #include "inventory.h"
 #include "Sample\SampleScene.h"
 

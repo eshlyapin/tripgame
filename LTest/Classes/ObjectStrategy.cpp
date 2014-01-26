@@ -22,7 +22,7 @@ void CollectStrategy::OnClicked(GameObject* owner, const cocos2d::CCPoint& point
 	if(owner->GetCurrentState() != "Collected")
 	{
 		if(owner->SetState("Collected"))
-			Inventory::GetInstance().AddItems(owner);			
+			Inventory::GetInstance().AddItem(owner);			
 		else
 			Logger.log(Log::Prioritiy_ERROR, "ITEM HAS NOT COLLECTABLE STATE!");
 	}
