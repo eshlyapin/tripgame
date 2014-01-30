@@ -133,6 +133,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\GameObjectLoader.cpp" />
     <ClCompile Include="..\Classes\GameScene.cpp" />
     <ClCompile Include="..\Classes\GameScreen.cpp" />
+    <ClCompile Include="..\Classes\GameScreenLoader.cpp" />
     <ClCompile Include="..\Classes\HUD.cpp" />
     <ClCompile Include="..\Classes\inventory.cpp" />
     <ClCompile Include="..\Classes\Log.cpp" />
@@ -153,6 +154,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\GameObjectLoader.h" />
     <ClInclude Include="..\Classes\GameScene.h" />
     <ClInclude Include="..\Classes\GameScreen.h" />
+    <ClInclude Include="..\Classes\GameScreenLoader.h" />
     <ClInclude Include="..\Classes\HUD.h" />
     <ClInclude Include="..\Classes\inventory.h" />
     <ClInclude Include="..\Classes\Log.h" />
@@ -164,6 +166,8 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\pugixml.hpp" />
     <ClInclude Include="..\Classes\Sample\ClickableStrategy.h" />
     <ClInclude Include="..\Classes\Sample\SampleScene.h" />
+    <ClInclude Include="..\Classes\ScreenFactory.h" />
+    <ClInclude Include="..\Classes\structObject.h" />
     <ClInclude Include="..\Classes\utils.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>

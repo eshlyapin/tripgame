@@ -3,24 +3,22 @@
 
 #include "GameScene.h"
 #include "GameObject.h"
-
-#include "cocos2d.h"
+#include "ScreenFactory.h"
 #include <vector>
-#include "pugixml.hpp"
-
+#include "structObject.h"
 class GameScreen;
 typedef std::vector<GameScreen*> ScreenArray;
 
 class GameScreen : public GameScene
 {
-	bool LoadObjects(const std::string& name);	
+	bool LoadObjects(std::vector<structObject>& objects, const std::string& backgroundPath);	
 protected:
 	GameObjectArray mObjectsArray;
 	cocos2d::CCLayer* mBackgroundLayer;
-	GameScreen() {}	
+	virtual bool init(std::vector<structObject>& objects, const std::string& backgroundPath);  
+
 public:    
 
-	virtual bool init(const std::string& scenename);  
 	virtual ~GameScreen() = 0;
 	
 	GameObjectArray				GetObjectArrayByName(const std::string& name);

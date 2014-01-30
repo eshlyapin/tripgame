@@ -1,6 +1,4 @@
 #include "GameObjectLoader.h"
-#include "utils.h"
-#include "ObjectState.h"
 
 using namespace std;
 using namespace pugi;
@@ -64,8 +62,4 @@ vector<ObjectState> GameObjectLoader::GetObjectStates()
 	return mObjectStates;
 }
 
-string GameObjectLoader::GetObjectBehavior()
-{
-	return mBehavior;
-}
 

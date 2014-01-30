@@ -13,13 +13,10 @@ class SampleScene : public GameScreen
 	CollectStrategy mCollectStrategy;
 	ClickableStrategy *mClickableStrategy;
 
-	SampleScene(){};
 public:
-	
-	virtual bool init();
+	virtual bool init(std::vector<structObject>& objects, const std::string& backgroundPath);
 	virtual ~SampleScene();
 	void update(float delta);
-	CREATE_FUNC(SampleScene);
 };
 
 #endif

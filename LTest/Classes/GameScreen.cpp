@@ -10,15 +10,13 @@ using namespace std;
 using namespace cocos2d;
 using namespace pugi;
 
-
-
-bool GameScreen::init(const string& scenename)
+bool GameScreen::init(vector<structObject>& objects, const string& backgroundPath)
 {
 	if( !CCScene::init() )
 		return false;
 	
 
-	if(!LoadObjects(scenename))
+	if(!LoadObjects(objects, backgroundPath))
 		Logger.log(Log::Prioritiy_ERROR, "Can't load game object!");
 
 	return true;
@@ -26,20 +24,10 @@ bool GameScreen::init(const string& scenename)
 
 GameScreen::~GameScreen()
 {
-
 }
 
-bool GameScreen::LoadObjects(const std::string& name)
+bool GameScreen::LoadObjects(vector<structObject>& objects, const string& backgroundPath)
 {
-	string xmlPath = GetXmlPath(name);
-	if(xmlPath == "")
-		return false;
-
-	xml_document doc;
-	CreateXmlDocument(xmlPath.c_str(), doc);
-
-	string backgroundPath = GetBackgroundPath(doc);
-
 	if(backgroundPath == "")
 	{
 		Logger.log(Log::Prioritiy_ERROR, "Can't load background");
@@ -51,32 +39,14 @@ bool GameScreen::LoadObjects(const std::string& name)
 		addChild(mBackgroundLayer);
 	}
 	
-	//FFFUUUUuu~
 	addChild(HUD::create());
 
-	for(xml_node object = doc.child("object"); object; object = object.next_sibling("object"))
+	for(size_t i = 0; i < objects.size(); ++i)
 	{
-		string objectName = object.child("name").text().as_string();
-		string objectState = object.child("state").text().as_string();
-		
-		xml_text x = object.child("xpos").text();
-		xml_text y = object.child("ypos").text();
-		
-		if(objectName == "" || objectState == "" || x == NULL || y == NULL)
-		{
-			Logger.log(Log::Prioritiy_ERROR, "Can't load object " + objectName);
-			mObjectsArray.clear();
-			removeAllChildrenWithCleanup(true);
-			return false;
-		}
-		else
-		{
-			GameObject *ob = ObjectFactory::Create(objectName, objectState);
-			addChild(ob);
-			ob->setPosition(x.as_int(), y.as_int());
-			mObjectsArray.push_back(ob);
-		}
-		
+		GameObject *ob = ObjectFactory::Create(objects[i].name, objects[i].state);
+		addChild(ob);
+		ob->setPosition(objects[i].point);
+		mObjectsArray.push_back(ob);
 	}
 	return true;
 }
@@ -112,5 +82,9 @@ void GameScreen::SetStrategyToGroup(GameObjectArray& group, ObjectStrategy* stra
 
 void GameScreen::SetStrategyToGroup(const std::string& name, ObjectStrategy* strategy)
 {
-	SetStrategyToGroup(GetObjectArrayByName(name), strategy);
+	GameObjectArray retArray = GetObjectArrayByName(name);
+	if(!retArray.empty())
+		SetStrategyToGroup(retArray, strategy);
+	else
+		Logger.log(Log::Prioritiy_ERROR, "Can't get array of objects");
 }

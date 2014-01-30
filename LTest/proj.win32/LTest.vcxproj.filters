@@ -55,6 +55,9 @@
     <ClCompile Include="..\Classes\Sample\ClickableStrategy.cpp">
       <Filter>Sample</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\GameScreenLoader.cpp">
+      <Filter>Engine\GameScenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\GameObject.h">
@@ -113,6 +116,15 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Sample\ClickableStrategy.h">
       <Filter>Sample</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameScreenLoader.h">
+      <Filter>Engine\GameScenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ScreenFactory.h">
+      <Filter>Engine\GameScenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\structObject.h">
+      <Filter>Engine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

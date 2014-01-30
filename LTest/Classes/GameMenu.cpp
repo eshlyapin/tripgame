@@ -2,6 +2,8 @@
 #include "Sample\SampleScene.h"
 #include "Log.h"
 #include "inventory.h"
+#include "ScreenFactory.h"
+
 using namespace cocos2d;
 using namespace std;
 
@@ -28,8 +30,7 @@ bool GameMenu::init()
 
 void GameMenu::startGameCallBack(CCObject* pSender)
 {
-	CCScene *pScene = SampleScene::create();
-	CCDirector::sharedDirector()->replaceScene(pScene);	
+	CCDirector::sharedDirector()->replaceScene(ScreenFactory<SampleScene>::Create("main"));	//? check that ScreenFactory returns not 0 (that "main"exists) 
 }
 void GameMenu::endGameCallBack(CCObject* pSender)
 {

@@ -35,7 +35,7 @@ void GameScene::ShowTooltip(const std::string& message,const CCPoint &point)
 
 	image->addChild(label);	
 
-	int actualDuration = 6;
+	int actualDuration = 4;
 
 	CCFiniteTimeAction* actionMove = CCJumpTo::create((float)actualDuration, ccp(getJumpWidth(point.x), 0), getJumpHeight(point.y, image->getContentSize().height), 1);
 	CCFiniteTimeAction* actionMoveDone = CCCallFuncN::create(this, callfuncN_selector(GameScene::spriteMoveFinished));
