@@ -10,7 +10,7 @@ using namespace pugi;
 GameObject* ObjectFactory::Create(const string& name, const string& curState)
 {
 	string xmlPath = GetXmlPath(name);
-	if(xmlPath == "")
+	if(!IsFileAvailable(xmlPath))
 		return 0;
 
 	xml_document doc;

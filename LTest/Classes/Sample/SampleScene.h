@@ -14,7 +14,7 @@ class SampleScene : public GameScreen
 	ClickableStrategy *mClickableStrategy;
 
 public:
-	virtual bool init(std::vector<structObject>& objects, const std::string& backgroundPath);
+	virtual bool init(const std::string& backgroundPath);
 	virtual ~SampleScene();
 	void update(float delta);
 };

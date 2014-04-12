@@ -8,8 +8,8 @@ class GameMenu : public GameScene
 {
 protected:
 	GameMenu(){}
-	void startGameCallBack(CCObject* pSender);
-	void endGameCallBack(CCObject* pSender);
+	void StartGameCallBack(CCObject* pSender);
+	void EndGameCallBack(CCObject* pSender);
 	void ContinueGameCallBack(CCObject* pSender);
 public:
 	bool init();

@@ -4,6 +4,7 @@
 #include <sstream>
 #include <GameMenu.h>
 #include <Log.h>
+#include "DataManager.h"
 using namespace cocos2d;
 using namespace std;
 
@@ -37,6 +38,7 @@ HUD::~HUD()
 void HUD::BackCallBack(CCObject* pSender)
 {
 	//change scene
+	DataManager::GetInstance().SaveGame();
 	CCScene *mMenu = GameMenu::create();
 	CCDirector::sharedDirector()->replaceScene(mMenu);
 }

@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<background>
+	<name>spring.png</name>
+</background>
+<object>
+	<name>smile</name>
+	<state>state1</state>
+	<xpos>240</xpos>
+	<ypos>160</ypos>
+</object>
+<object>
+	<name>smile</name>
+	<state>state2</state>
+	<xpos>100</xpos>
+	<ypos>100</ypos>
+</object>
+<object>
+	<name>coin</name>
+	<state>OnScreen</state>
+	<xpos>150</xpos>
+	<ypos>150</ypos>
+</object>
+<object>
+	<name>coin</name>
+	<state>OnScreen</state>
+	<xpos>350</xpos>
+	<ypos>150</ypos>
+</object>
+<object>
+	<name>coin</name>
+	<state>OnScreen</state>
+	<xpos>130</xpos>
+	<ypos>190</ypos>
+</object>
+<object>
+	<name>key</name>
+	<state>Collected</state>
+	<xpos>250</xpos>
+	<ypos>100</ypos>
+</object>
+<object>
+	<name>squash</name>
+	<state>OnScreen</state>
+	<xpos>370</xpos>
+	<ypos>250</ypos>
+</object>
+<object>
+	<name>squash</name>
+	<state>OnScreen</state>
+	<xpos>372</xpos>
+	<ypos>105</ypos>
+</object>
+<object>
+	<name>squash</name>
+	<state>OnScreen</state>
+	<xpos>400</xpos>
+	<ypos>130</ypos>
+</object>
+<object>
+	<name>squash</name>
+	<state>OnScreen</state>
+	<xpos>370</xpos>
+	<ypos>100</ypos>
+</object>
+<object>
+	<name>squash</name>
+	<state>OnScreen</state>
+	<xpos>370</xpos>
+	<ypos>112</ypos>
+</object>
+<object>
+	<name>door</name>
+	<state>closed</state>
+	<xpos>370</xpos>
+	<ypos>90</ypos>
+</object>
+<parameters>
+	<parameter name="key">true</parameter>
+	<parameter name="lightOn">true</parameter>
+	<parameter name="openDoor">true</parameter>
+</parameters>

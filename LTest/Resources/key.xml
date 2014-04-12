@@ -1,0 +1,11 @@
+<name>
+  key
+</name>
+<state>
+	<name>OnScreen</name>
+	<image>key.png</image>
+</state>
+<state>
+	<name>Collected</name>
+	<image>key-inventory.png</image>
+</state>

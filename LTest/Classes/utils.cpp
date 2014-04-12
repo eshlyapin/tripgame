@@ -6,9 +6,9 @@ using namespace cocos2d;
 
 string GetXmlPath(const std::string& objectName)
 {
-	//string lol = objectName + ".xml" ;
 	string xmlFile = objectName + ".xml"; 
-	return CCFileUtils::sharedFileUtils()->fullPathForFilename(xmlFile.c_str());
+	xmlFile = CCFileUtils::sharedFileUtils()->fullPathForFilename(xmlFile.c_str());
+	return xmlFile;
 }
 
 void CreateXmlDocument(const char* file, xml_document & retDoc)
@@ -19,4 +19,25 @@ void CreateXmlDocument(const char* file, xml_document & retDoc)
 
 	retDoc.load_buffer(buffer, bufferSize);
 	delete[] buffer;
+}
+
+void MakeString(string& dest, size_t src)
+{
+	stringstream ss;
+	ss << src;
+	dest = ss.str();
+}
+
+void MakeString(string& dest, float src)
+{
+	stringstream ss;
+	ss << src;
+	dest = ss.str();
+}
+
+bool IsFileAvailable(const std::string& path)
+{
+	if(CCFileUtils::sharedFileUtils()->isFileExist(path))
+		return true;
+	return false;
 }

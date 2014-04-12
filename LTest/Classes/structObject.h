@@ -9,5 +9,7 @@ struct structObject
 	std::string name;
 	std::string state;
 	cocos2d::CCPoint point;
+
+	structObject(std::string& Name, std::string& State, cocos2d::CCPoint& Point) : name(Name), state(State), point(Point) {}
 };
 #endif

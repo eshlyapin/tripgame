@@ -6,25 +6,18 @@
 #include "ScreenFactory.h"
 #include <vector>
 #include "structObject.h"
-class GameScreen;
-typedef std::vector<GameScreen*> ScreenArray;
+#include "DataManager.h"
 
 class GameScreen : public GameScene
 {
-	bool LoadObjects(std::vector<structObject>& objects, const std::string& backgroundPath);	
-protected:
-	GameObjectArray mObjectsArray;
-	cocos2d::CCLayer* mBackgroundLayer;
-	virtual bool init(std::vector<structObject>& objects, const std::string& backgroundPath);  
+	bool LoadObjects(const std::string& backgroundPath);	
+protected:	
+	bool IsUpdate;
+	virtual bool init(const std::string& backgroundPath);  
 
 public:    
 
 	virtual ~GameScreen() = 0;
-	
-	GameObjectArray				GetObjectArrayByName(const std::string& name);
-	GameObject*					GetObjectByName(const std::string& name);
-	void						SetStrategyToGroup(GameObjectArray& group, ObjectStrategy* strategy);
-	void						SetStrategyToGroup(const std::string& name, ObjectStrategy* strategy);
 };
 
 #endif

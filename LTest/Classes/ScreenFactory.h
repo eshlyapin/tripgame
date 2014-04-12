@@ -7,15 +7,18 @@
 #include "GameScreen.h"
 #include "utils.h"
 #include "Log.h"
+#include "DataManager.h"
 
 class GameScreen;
-template<class T>
+
 class ScreenFactory
 {
-	static T* CreateScreen(std::vector<structObject>& objects, std::string backgroundPath)
+	
+	template<class T>
+	static T* CreateScreen(std::string backgroundPath)
 	{
 		T* screen = new T();
-		if(screen->init(objects, backgroundPath))
+		if(screen->init(backgroundPath))
 		{
 			screen->autorelease();
 			return screen;
@@ -26,24 +29,25 @@ class ScreenFactory
 			return 0;
 		}
 	}
+	static pugi::xml_document doc;
 public:
+	template<class T>
 	static T* Create(const std::string& name)		
 	{
 		std::string xmlPath = GetXmlPath(name);
-		if(xmlPath == "")
+		if(!IsFileAvailable(xmlPath))
 			return 0;
 
-		pugi::xml_document doc;
 		CreateXmlDocument(xmlPath.c_str(), doc);
 
 		GameScreenLoader loader(doc);
 		if (!loader.Load())		
 			Logger.log(Log::Prioritiy_ERROR, "Can't load object " + name);	
 
-		vector<structObject> objects = loader.GetObjects();
 		string mBackground = loader.GetBackgroundPath();
-		return CreateScreen(objects, mBackground);		
+		DataManager::GetInstance().setValues(loader.GetObjects(), mBackground, loader.GetParameters());
+
+		return CreateScreen<T>(mBackground);		
 	}
 };
-
 #endif

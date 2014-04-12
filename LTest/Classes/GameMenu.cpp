@@ -3,6 +3,7 @@
 #include "Log.h"
 #include "inventory.h"
 #include "ScreenFactory.h"
+#include "DataManager.h"
 
 using namespace cocos2d;
 using namespace std;
@@ -13,31 +14,41 @@ GameMenu::~GameMenu()
 
 bool GameMenu::init()
 {
-	CCMenuItem *buttonStart = CCMenuItemFont::create("Start", this, menu_selector(GameMenu::startGameCallBack));
-	CCMenuItem *buttonClose = CCMenuItemFont::create("Close", this, menu_selector(GameMenu::endGameCallBack));
+	CCMenuItem *buttonStart = CCMenuItemFont::create("Start", this, menu_selector(GameMenu::StartGameCallBack));
+	CCMenuItem *buttonClose = CCMenuItemFont::create("Close", this, menu_selector(GameMenu::EndGameCallBack));
 
 	addChild(LoadBackground("HelloWorld.png"));
-
-	//add check, that scene manager has saved game
-	
-	CCMenuItem *buttonContinue = CCMenuItemFont::create("Continue", this, menu_selector(GameMenu::ContinueGameCallBack));
-	CCMenu *menu = CCMenu::create(buttonContinue, buttonStart, buttonClose, NULL);
+	CCMenu *menu;
+	DataManager mng = DataManager::GetInstance();
+	if(mng.isStoredGame())
+	{
+		CCMenuItem *buttonContinue = CCMenuItemFont::create("Continue", this, menu_selector(GameMenu::ContinueGameCallBack));
+		menu = CCMenu::create(buttonContinue, buttonStart, buttonClose, NULL);
+	}
+	else
+		menu = CCMenu::create(buttonStart, buttonClose, NULL);
 	
 	menu->alignItemsVertically();
 	addChild(menu, 1);
 	return true;
 }
 
-void GameMenu::startGameCallBack(CCObject* pSender)
+void GameMenu::StartGameCallBack(CCObject* pSender)
 {
-	CCDirector::sharedDirector()->replaceScene(ScreenFactory<SampleScene>::Create("main"));	//? check that ScreenFactory returns not 0 (that "main"exists) 
+	//clear all stored values from Data Manager (and all stored .xml)
+	SampleScene *newScene = ScreenFactory::Create<SampleScene>("main");
+	if(newScene)
+		CCDirector::sharedDirector()->replaceScene(newScene);
+	else 
+		Logger.log(Log::Prioritiy_ERROR, "Can't create main scene");
 }
-void GameMenu::endGameCallBack(CCObject* pSender)
+void GameMenu::EndGameCallBack(CCObject* pSender)
 {
 	CCDirector::sharedDirector()->end();
 	exit(0);
 }
 void GameMenu::ContinueGameCallBack(CCObject* pSender)
 {
-	//load saved game
+	DataManager mng = DataManager::GetInstance();
+	CCDirector::sharedDirector()->replaceScene(ScreenFactory::Create<SampleScene>(mng.getSavedGame()));
 }

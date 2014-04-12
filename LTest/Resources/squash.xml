@@ -1,0 +1,9 @@
+<name>squash</name>
+<state>
+	<name>OnScreen</name>
+	<image>squash.png</image>
+</state>
+<state>
+	<name>Collected</name>
+	<image>squash-dis.png</image>
+</state>

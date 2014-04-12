@@ -7,5 +7,5 @@ ClickableStrategy::ClickableStrategy(GameScene* scene)
 
 void ClickableStrategy::OnClicked(GameObject* owner, const cocos2d::CCPoint& point)
 {	
-	ownerScene->ShowTooltip("Take 2 coins!!", point);	
+	ownerScene->ShowTooltip("Take all coins and key!!", point);	
 }

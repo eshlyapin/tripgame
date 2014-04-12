@@ -1,6 +1,9 @@
 #include "main.h"
 #include "AppDelegate.h"
 #include "CCEGLView.h"
+#include "ScreenFactory.h"
+
+pugi::xml_document ScreenFactory::doc;
 
 USING_NS_CC;
 

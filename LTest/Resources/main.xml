@@ -1,5 +1,5 @@
 <background>
-<name>HelloWorld.png</name>
+<name>spring.png</name>
 </background>
 <object>
 <name>smile</name>
@@ -32,8 +32,49 @@
 <ypos>190</ypos>
 </object>
 <object>
+<name>key</name>
+<state>OnScreen</state>
+<xpos>250</xpos>
+<ypos>100</ypos>
+</object>
+<object>
+<name>squash</name>
+<state>OnScreen</state>
+<xpos>370</xpos>
+<ypos>250</ypos>
+</object>
+<object>
+<name>squash</name>
+<state>OnScreen</state>
+<xpos>372</xpos>
+<ypos>105</ypos>
+</object>
+<object>
+<name>squash</name>
+<state>OnScreen</state>
+<xpos>400</xpos>
+<ypos>130</ypos>
+</object>
+<object>
+<name>squash</name>
+<state>OnScreen</state>
+<xpos>370</xpos>
+<ypos>100</ypos>
+</object>
+<object>
+<name>squash</name>
+<state>OnScreen</state>
+<xpos>370</xpos>
+<ypos>112</ypos>
+</object>
+<object>
 <name>door</name>
 <state>closed</state>
 <xpos>370</xpos>
 <ypos>90</ypos>
 </object>
+<parameters>
+<parameter name="openDoor">false</parameter>
+<parameter name="key">false</parameter>
+<parameter name="lightOn">true</parameter>
+</parameters>
